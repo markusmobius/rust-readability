@@ -1,0 +1,26 @@
+Rust-Readability contains native translations and adapted data from:
+
+- Go-ReadabilityV2, the core-only fork of Readeck Go Readability v2.1.2,
+  upstream commit b18540d99ebf105cd67122585a0a41ec299b70bc, under the MIT
+  terms retained in LICENSE. The fork's source receipt is in testdata/go-source.json.
+- Go and golang.org/x/net, including HTML entities, rendering, doctypes, atom
+  names, URL behavior, sorting, time layouts and Windows timezone abbreviations,
+  under the BSD-3-Clause terms in licenses/LICENSE-go.txt.
+- github.com/itlightning/dateparse v0.2.1, under the MIT terms in
+  licenses/LICENSE-dateparse.txt.
+- Rust-DomDistiller 1.0.0 and its Go-Shiori DOM, chardet and ICU-derived reader
+  sources and tables. Their original notices are retained in licenses/ and
+  their archive/file digests are recorded in testdata/reader-provenance.json.
+- The optional benchmark tooling adapts scoring and harness patterns from
+  content-extractor-benchmark, commit 466fdbee8a504441eb78ed11d71c1da220681cab,
+  and Rust-DomDistiller's benchmark. The original Apache-2.0 benchmark notice
+  is retained in licenses/LICENSE-benchmark.txt. It does not relicense the
+  source website pages, which are not included here.
+
+The bundled zoneinfo.zip is the exact timezone-data archive shipped with
+Go 1.27.1. It contains compiled IANA Time Zone Database data. The Go Windows
+abbreviation table is generated from its CLDR-derived toolchain source.
+
+Rust registry dependencies retain their own licenses. Original website pages
+used by optional differential tests are not included or relicensed in this
+package. UPSTREAM.md records the reference graph, adaptations and evidence.

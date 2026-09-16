@@ -1,0 +1,5324 @@
+{
+  "affinity": [
+    2
+  ],
+  "aligned_codeberg_differences": [],
+  "build": {
+    "engines": {
+      "codeberg": {
+        "binary": "/mnt/c/github/newsprinceton-gopython/rust-readability/target/benchmark/codeberg-worker",
+        "binary_sha256": "01e2b04b5d6bd8ad29e3bb9db769b23e519faa9d446e2ef43ef530ee6b11d7f1",
+        "compiled_modules": {
+          "codeberg.org/readeck/go-readability/v2": "main",
+          "github.com/andybalholm/cascadia": "v1.3.3",
+          "github.com/go-shiori/dom": "v0.0.0-20230515143342-73569d674e1c",
+          "github.com/gogs/chardet": "v0.0.0-20211120154057-b7413eaefb8f",
+          "github.com/itlightning/dateparse": "v0.2.1",
+          "golang.org/x/net": "v0.41.0",
+          "golang.org/x/text": "v0.26.0"
+        },
+        "module": "codeberg.org/readeck/go-readability/v2",
+        "selected_modules": {
+          "codeberg.org/readeck/go-readability/v2": "main",
+          "github.com/andybalholm/cascadia": "v1.3.3",
+          "github.com/davecgh/go-spew": "v1.1.1",
+          "github.com/go-shiori/dom": "v0.0.0-20230515143342-73569d674e1c",
+          "github.com/gogs/chardet": "v0.0.0-20211120154057-b7413eaefb8f",
+          "github.com/google/go-cmp": "v0.6.0",
+          "github.com/itlightning/dateparse": "v0.2.1",
+          "github.com/kr/pretty": "v0.1.0",
+          "github.com/kr/pty": "v1.1.1",
+          "github.com/kr/text": "v0.1.0",
+          "github.com/lmittmann/tint": "v1.1.2",
+          "github.com/mattn/go-isatty": "v0.0.20",
+          "github.com/mattn/go-runewidth": "v0.0.16",
+          "github.com/pmezard/go-difflib": "v1.0.0",
+          "github.com/rivo/uniseg": "v0.4.7",
+          "github.com/scylladb/termtables": "v0.0.0-20191203121021-c4c0b6d42ff4",
+          "github.com/sergi/go-diff": "v1.4.0",
+          "github.com/spf13/pflag": "v1.0.6",
+          "github.com/stretchr/objx": "v0.5.2",
+          "github.com/stretchr/testify": "v1.10.0",
+          "github.com/yuin/goldmark": "v1.4.13",
+          "golang.org/x/crypto": "v0.39.0",
+          "golang.org/x/mod": "v0.25.0",
+          "golang.org/x/net": "v0.41.0",
+          "golang.org/x/sync": "v0.15.0",
+          "golang.org/x/sys": "v0.33.0",
+          "golang.org/x/telemetry": "v0.0.0-20240228155512-f48c80bd79b2",
+          "golang.org/x/term": "v0.32.0",
+          "golang.org/x/text": "v0.26.0",
+          "golang.org/x/tools": "v0.33.0",
+          "golang.org/x/xerrors": "v0.0.0-20190717185122-a985d3407aa7",
+          "gopkg.in/check.v1": "v1.0.0-20190902080502-41f04d3bba15",
+          "gopkg.in/yaml.v2": "v2.4.0",
+          "gopkg.in/yaml.v3": "v3.0.1"
+        },
+        "source_tree_sha256": "0d0e594c4b3babf640744cfee930fff626a536ced82dc64af2cf59585edfd1c1"
+      },
+      "codeberg-aligned": {
+        "binary": "/mnt/c/github/newsprinceton-gopython/rust-readability/target/benchmark/codeberg-aligned-worker",
+        "binary_sha256": "aa9949e208b51444da16e0c91efbcef2d744de15e722689fe51e384931e0caef",
+        "compiled_modules": {
+          "codeberg.org/readeck/go-readability/v2": "main",
+          "github.com/andybalholm/cascadia": "v1.3.3",
+          "github.com/go-shiori/dom": "v0.0.0-20230515143342-73569d674e1c",
+          "github.com/gogs/chardet": "v0.0.0-20211120154057-b7413eaefb8f",
+          "github.com/itlightning/dateparse": "v0.2.1",
+          "golang.org/x/net": "v0.59.0",
+          "golang.org/x/text": "v0.42.0"
+        },
+        "dependency_overrides": {
+          "golang.org/x/net": "v0.59.0",
+          "golang.org/x/text": "v0.42.0"
+        },
+        "module": "codeberg.org/readeck/go-readability/v2",
+        "selected_modules": {
+          "codeberg.org/readeck/go-readability/v2": "main",
+          "github.com/andybalholm/cascadia": "v1.3.3",
+          "github.com/davecgh/go-spew": "v1.1.1",
+          "github.com/go-shiori/dom": "v0.0.0-20230515143342-73569d674e1c",
+          "github.com/gogs/chardet": "v0.0.0-20211120154057-b7413eaefb8f",
+          "github.com/google/go-cmp": "v0.6.0",
+          "github.com/itlightning/dateparse": "v0.2.1",
+          "github.com/kr/pretty": "v0.1.0",
+          "github.com/kr/pty": "v1.1.1",
+          "github.com/kr/text": "v0.1.0",
+          "github.com/lmittmann/tint": "v1.1.2",
+          "github.com/mattn/go-isatty": "v0.0.20",
+          "github.com/mattn/go-runewidth": "v0.0.16",
+          "github.com/pmezard/go-difflib": "v1.0.0",
+          "github.com/rivo/uniseg": "v0.4.7",
+          "github.com/scylladb/termtables": "v0.0.0-20191203121021-c4c0b6d42ff4",
+          "github.com/sergi/go-diff": "v1.4.0",
+          "github.com/spf13/pflag": "v1.0.6",
+          "github.com/stretchr/objx": "v0.5.2",
+          "github.com/stretchr/testify": "v1.10.0",
+          "github.com/yuin/goldmark": "v1.4.13",
+          "golang.org/x/crypto": "v0.57.0",
+          "golang.org/x/mod": "v0.41.0",
+          "golang.org/x/net": "v0.59.0",
+          "golang.org/x/sync": "v0.23.0",
+          "golang.org/x/sys": "v0.48.0",
+          "golang.org/x/telemetry": "v0.0.0-20240228155512-f48c80bd79b2",
+          "golang.org/x/term": "v0.46.0",
+          "golang.org/x/text": "v0.42.0",
+          "golang.org/x/tools": "v0.49.0",
+          "golang.org/x/xerrors": "v0.0.0-20190717185122-a985d3407aa7",
+          "gopkg.in/check.v1": "v1.0.0-20190902080502-41f04d3bba15",
+          "gopkg.in/yaml.v2": "v2.4.0",
+          "gopkg.in/yaml.v3": "v3.0.1"
+        },
+        "source_tree_sha256": "cca5df44f780d85146b0537aa675ee2ff4378fbec5bd454a2bab1ad2c039867e"
+      },
+      "go-readability": {
+        "binary": "/mnt/c/github/newsprinceton-gopython/rust-readability/target/benchmark/go-readability-worker",
+        "binary_sha256": "920332eda469026109cbdec4c7614dc02dab8b2bd589ed9501ce06697fa024fc",
+        "compiled_modules": {
+          "github.com/andybalholm/cascadia": "v1.3.3",
+          "github.com/go-shiori/dom": "v0.0.0-20230515143342-73569d674e1c",
+          "github.com/gogs/chardet": "v0.0.0-20211120154057-b7413eaefb8f",
+          "github.com/itlightning/dateparse": "v0.2.1",
+          "github.com/markusmobius/go-readabilityV2": "main",
+          "golang.org/x/net": "v0.59.0",
+          "golang.org/x/text": "v0.42.0"
+        },
+        "module": "github.com/markusmobius/go-readabilityV2",
+        "selected_modules": {
+          "github.com/andybalholm/cascadia": "v1.3.3",
+          "github.com/davecgh/go-spew": "v1.1.1",
+          "github.com/go-shiori/dom": "v0.0.0-20230515143342-73569d674e1c",
+          "github.com/gogs/chardet": "v0.0.0-20211120154057-b7413eaefb8f",
+          "github.com/google/go-cmp": "v0.6.0",
+          "github.com/itlightning/dateparse": "v0.2.1",
+          "github.com/kr/pretty": "v0.1.0",
+          "github.com/kr/pty": "v1.1.1",
+          "github.com/kr/text": "v0.1.0",
+          "github.com/markusmobius/go-readabilityV2": "main",
+          "github.com/mattn/go-runewidth": "v0.0.16",
+          "github.com/pmezard/go-difflib": "v1.0.0",
+          "github.com/rivo/uniseg": "v0.4.7",
+          "github.com/scylladb/termtables": "v0.0.0-20191203121021-c4c0b6d42ff4",
+          "github.com/sergi/go-diff": "v1.4.0",
+          "github.com/stretchr/objx": "v0.5.2",
+          "github.com/stretchr/testify": "v1.10.0",
+          "github.com/yuin/goldmark": "v1.4.13",
+          "golang.org/x/crypto": "v0.57.0",
+          "golang.org/x/mod": "v0.41.0",
+          "golang.org/x/net": "v0.59.0",
+          "golang.org/x/sync": "v0.23.0",
+          "golang.org/x/sys": "v0.48.0",
+          "golang.org/x/telemetry": "v0.0.0-20240228155512-f48c80bd79b2",
+          "golang.org/x/term": "v0.46.0",
+          "golang.org/x/text": "v0.42.0",
+          "golang.org/x/tools": "v0.49.0",
+          "golang.org/x/xerrors": "v0.0.0-20190717185122-a985d3407aa7",
+          "gopkg.in/check.v1": "v1.0.0-20190902080502-41f04d3bba15",
+          "gopkg.in/yaml.v2": "v2.4.0",
+          "gopkg.in/yaml.v3": "v3.0.1"
+        },
+        "source_tree_sha256": "7b4ab06ed130e3ff5778dfd69dedc87ce12f63e8c8521e0789e855b19070b064"
+      },
+      "rust-readability": {
+        "binary": "/mnt/c/github/newsprinceton-gopython/rust-readability/target/linux/release/examples/benchmark",
+        "binary_sha256": "ca2f2960843ad16b69f7d5f08161bb75e29ba0d397e8858c7116831cb894e146"
+      }
+    },
+    "go_version": "go version go1.27.1 linux/amd64",
+    "rust_version": "rustc 1.98.1 (48a229cea 2026-09-01)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: x86_64-unknown-linux-gnu\nrelease: 1.98.1\nLLVM version: 22.1.8",
+    "source_sha256": {
+      "Cargo.lock": "474ff92d36490732f55728bf49460b677b806b70239af7b7a4a7e41acec3a721",
+      "Cargo.toml": "b962ff5ba7c13aadb78916950a61cd85e9ca95509dc61d150e44e2da85fcfe5a",
+      "examples/benchmark.rs": "97d274b06d4649915909bb582425311641f4f36dfc0a374d936ebbd1bdaa070f",
+      "rust-toolchain.toml": "1b813252da8fa3c89c48666c895b7c73e0b7f1eda5a1eea96cde59fc5b24c28e",
+      "src/article.rs": "b0a490e0b04ccb737ffffe52904d0a9c676b626f02db2b0ccf444f62ed2f9645",
+      "src/check.rs": "98a8cb2ade5fdbf64fc3060d59f597629514c352b187da9d123710b1df8f3175",
+      "src/cleanup.rs": "4f7327ccb86f3e71d85d66d090ff46ba2e6e26ba8747d379f4709a517c89d216",
+      "src/dom.rs": "6f0d18fb7cb168868b5c55eb570b529ac2efcc5b2974278f15a65e2fa2a0f40b",
+      "src/encoding.rs": "3dd77c195aff383b85c8db4e1c011a0a90f8573f9c1309e961281c9ddc7ea54d",
+      "src/encoding/decoder.rs": "c824ff47089cd30b307983ca9b8112595e20775549db31d56f64c2f471e98110",
+      "src/encoding/tables.rs": "6d445b77680af310e7f4cc9486d1a53176f619692238d1e87b63bf02becabad2",
+      "src/entities.rs": "75b566f187fd37b9dffa9d13887364ca4a744871911b03f8dd8a18e9795be1ca",
+      "src/extract.rs": "74cc3c501208bb1b004060708305634b0bfb3532c65726882b09dfa5a3aba79b",
+      "src/html-atoms.json": "79e847d04d9b4e072928fa82003efcbae0a1aee6d5b0587baa3bb56396f56122",
+      "src/html.rs": "3062b170403492d0c6e09fc4706e8b993cdf7cf3ece81bf64c808186952a3400",
+      "src/html/doctype.rs": "ca4335db0bf066de5ea8dcd70a5848d5ce3c349d31a7242286db701c009ab471",
+      "src/html/sink.rs": "7a3f8220635c4c6271f3ad2f31b4384cd402af81979a41162ac01d3419b10345",
+      "src/json.rs": "542cbfff8edb89eaec38a4805d66d33d5c3b6e153cc00fa6ed9614e657a3f560",
+      "src/lib.rs": "3c90b5678bae564e11916b8a38ab789c04bd61bd53a508ce2fb6f4314e9d82c4",
+      "src/metadata.rs": "6795f51979b8006a0baf72b2b4ebe37d110a7cbe3d58acb35ff24967ed8b9909",
+      "src/options.rs": "b8b8165e80b31de3a4fd7f12950bb7093cde9bef593b746c8c648862c845ac97",
+      "src/parser.rs": "cbab210d8bf114a04c48230482a333720a954b738d70e0870e8f06545ff9d7c4",
+      "src/postprocess.rs": "ca59c82f168d070510d4ffb65fb0bc003bbf1d57f037e42a64624f17d0faae90",
+      "src/prepare.rs": "6bbc318194062f64fe4339ecad626837276fddf5be21f0b6f217f436387a4452",
+      "src/render.rs": "74e9243714e60e94f945433e96a0e870c95c96a4100cb24b59dd99cb0623f468",
+      "src/score.rs": "38ebfcb586eb8c6a15409d602bd49ac46bd0cd473613f4eff1ad71dea542cf13",
+      "src/sort.rs": "5658f4d64fd58b0abcb9f9b04532c7e78285610d661927f62b9e05a818df6dc3",
+      "src/timestamp.rs": "21bff3fdb0a13e5711981730cb191803095f77f9408d807bd9dd9c338419c98c",
+      "src/timestamp/dateparse.rs": "4588c1d2fc9dc11af0dcc3469e69b28b1058077227191fe535a1d8182830c75f",
+      "src/timestamp/layout.rs": "c3ad06486f9d18009ab2223ecd9417f7df55162d6bc8e9d42d2384660d654047",
+      "src/timestamp/location.rs": "1de3e465a90f8ebd6619bee37394ef9d0b54e3ce9210cf0927ecfdac74474baf",
+      "src/timestamp/location/windows.rs": "f0176e8ead74341e346b6e75771eadf4a25d794e8c369143acbb0728f013aae8",
+      "src/timestamp/windows-abbreviations.json": "87c1294ff30c475aac91666191ba225b1fc3670318521d27358ac88e06e2cfa3",
+      "src/timestamp/zoneinfo.zip": "b2d18a7c8fa8142097a48c99609fb3c92db5ee98bc740294e57eab8ae9f94779",
+      "src/upstream_tests.rs": "57662ba4ba36866915c7a2174bd9fb5d74f1d923dc8396840cdf9e789b83fae1",
+      "src/url.rs": "9eca252ae22d642415fd77fd3a13b3d44e756dc862fd8cc0dbe4d90db2c749e3",
+      "testdata/go-modules.json": "06e63a6862a767c4907e2dabfbcff568629aacebe38b0d164e4b62c7502a2fa2",
+      "testdata/go-source.json": "5ff9682debf66816960d8dbb21bbcf289dd7ad6b81db7c9870abf8b8cfc046b5",
+      "tools/benchmark-go/main.go": "7f228234f501b67335b8c7f71ca578f2ed6ea53179d69f504423c08b3e5996b0",
+      "tools/benchmark-go/main_test.go": "90524f11a3beaeae354b8221f024543796bc33e96ea57049f6390c484e0dcba5",
+      "tools/benchmark.py": "4cfe53285462a93ba86e380b8df7644f674f443fce6467a6f14d5cda56d4a6cd",
+      "tools/go_reference.py": "05f8b3b620830a8a7a5e03167ace08a155931bc6f05028b87f941d2dd246fd0f"
+    },
+    "upstream_commit": "b18540d99ebf105cd67122585a0a41ec299b70bc"
+  },
+  "compared_fields": [
+    "text",
+    "html",
+    "title",
+    "byline",
+    "excerpt",
+    "site_name",
+    "image_url",
+    "favicon",
+    "language",
+    "error"
+  ],
+  "corpus_commit": "466fdbee8a504441eb78ed11d71c1da220681cab",
+  "corpus_repository": "https://github.com/markusmobius/content-extractor-benchmark",
+  "corpus_sha256": "0e8b21bc8c28a88a90d891d91020a21aab95a2cfa83f761dd2b1642d98c757ea",
+  "cpu": {
+    "lscpu": [
+      {
+        "data": "x86_64",
+        "field": "Architecture:"
+      },
+      {
+        "data": "32-bit, 64-bit",
+        "field": "CPU op-mode(s):"
+      },
+      {
+        "data": "48 bits physical, 48 bits virtual",
+        "field": "Address sizes:"
+      },
+      {
+        "data": "Little Endian",
+        "field": "Byte Order:"
+      },
+      {
+        "data": "16",
+        "field": "CPU(s):"
+      },
+      {
+        "data": "0-15",
+        "field": "On-line CPU(s) list:"
+      },
+      {
+        "data": "AuthenticAMD",
+        "field": "Vendor ID:"
+      },
+      {
+        "data": "AMD Ryzen AI 7 PRO 350 w/ Radeon 860M",
+        "field": "Model name:"
+      },
+      {
+        "data": "26",
+        "field": "CPU family:"
+      },
+      {
+        "data": "96",
+        "field": "Model:"
+      },
+      {
+        "data": "2",
+        "field": "Thread(s) per core:"
+      },
+      {
+        "data": "8",
+        "field": "Core(s) per socket:"
+      },
+      {
+        "data": "1",
+        "field": "Socket(s):"
+      },
+      {
+        "data": "0",
+        "field": "Stepping:"
+      },
+      {
+        "data": "3992.33",
+        "field": "BogoMIPS:"
+      },
+      {
+        "data": "fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext perfctr_core ssbd ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves avx_vnni avx512_bf16 clzero xsaveerptr arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload avx512vbmi umip avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid fsrm avx512_vp2intersect",
+        "field": "Flags:"
+      },
+      {
+        "data": "AMD-V",
+        "field": "Virtualization:"
+      },
+      {
+        "data": "Microsoft",
+        "field": "Hypervisor vendor:"
+      },
+      {
+        "data": "full",
+        "field": "Virtualization type:"
+      },
+      {
+        "data": "384 KiB (8 instances)",
+        "field": "L1d cache:"
+      },
+      {
+        "data": "256 KiB (8 instances)",
+        "field": "L1i cache:"
+      },
+      {
+        "data": "8 MiB (8 instances)",
+        "field": "L2 cache:"
+      },
+      {
+        "data": "16 MiB (1 instance)",
+        "field": "L3 cache:"
+      },
+      {
+        "data": "1",
+        "field": "NUMA node(s):"
+      },
+      {
+        "data": "0-15",
+        "field": "NUMA node0 CPU(s):"
+      },
+      {
+        "data": "Not affected",
+        "field": "Vulnerability Gather data sampling:"
+      },
+      {
+        "data": "Not affected",
+        "field": "Vulnerability Ghostwrite:"
+      },
+      {
+        "data": "Not affected",
+        "field": "Vulnerability Indirect target selection:"
+      },
+      {
+        "data": "Not affected",
+        "field": "Vulnerability Itlb multihit:"
+      },
+      {
+        "data": "Not affected",
+        "field": "Vulnerability L1tf:"
+      },
+      {
+        "data": "Not affected",
+        "field": "Vulnerability Mds:"
+      },
+      {
+        "data": "Not affected",
+        "field": "Vulnerability Meltdown:"
+      },
+      {
+        "data": "Not affected",
+        "field": "Vulnerability Mmio stale data:"
+      },
+      {
+        "data": "Not affected",
+        "field": "Vulnerability Old microcode:"
+      },
+      {
+        "data": "Not affected",
+        "field": "Vulnerability Reg file data sampling:"
+      },
+      {
+        "data": "Not affected",
+        "field": "Vulnerability Retbleed:"
+      },
+      {
+        "data": "Vulnerable: Safe RET, no microcode",
+        "field": "Vulnerability Spec rstack overflow:"
+      },
+      {
+        "data": "Mitigation; Speculative Store Bypass disabled via prctl",
+        "field": "Vulnerability Spec store bypass:"
+      },
+      {
+        "data": "Mitigation; usercopy/swapgs barriers and __user pointer sanitization",
+        "field": "Vulnerability Spectre v1:"
+      },
+      {
+        "data": "Mitigation; Retpolines; IBPB conditional; IBRS_FW; STIBP always-on; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected",
+        "field": "Vulnerability Spectre v2:"
+      },
+      {
+        "data": "Not affected",
+        "field": "Vulnerability Srbds:"
+      },
+      {
+        "data": "Not affected",
+        "field": "Vulnerability Tsa:"
+      },
+      {
+        "data": "Not affected",
+        "field": "Vulnerability Tsx async abort:"
+      },
+      {
+        "data": "Not affected",
+        "field": "Vulnerability Vmscape:"
+      }
+    ]
+  },
+  "created_utc": "2026-09-16T12:58:58.390578+00:00",
+  "differences": {
+    "go-readability": [
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "kulinariaathome.com.mandelpl\u00e4tzchen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "denkanstoos.com.2012.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "ebrosia.de.zinfandel.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "landwirt.com.sensortechnik.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "schleifen.ucoz.de.briefe.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "simplyscience.ch.erdoel.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "love-hina.ch.0409.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "spektrum.de.engelbart.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "austria.info.radfahren.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "buchperlen.wordpress.com.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "futurezone.at.lyft.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "moritz-meyer.net.vreni.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "gruen-digital.de.jahrestagung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "telemedicus.info.rezension.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "cnet.de.schutz.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "sueddeutsche.de.flixtrain.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "adac.de.kindersitze.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "computerbase.de.htc.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "meedia.de.freenet.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "incurvy.de.wellness.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "speicherguide.de.schwierige.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "novalanalove.com.ear-candy.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "franziska-elea.de.vuitton.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "changelog.blog.zwischenbilanz.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "threatpost.com.android.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "crazy-julia.de.tipps.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "skateboardmsm.de.dormhagen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "en.wikipedia.org.tsne.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "mixed.de.vrodo.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "github.blog.spiceland.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "chip.de.beef.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "franceculture.fr.idees.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "vancouversun.com.microsoft.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "nmb-media.de.ebay.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bibliothek2null.de.mai.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "de.globalvoices.org.nicaragua.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "creeny.wordpress.com.nebelsuppe.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "wiki.piratenpartei.de.stammtisch.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "gnadlib.wordpress.com.scherenschnitt.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "spontis.de.jahrzehnt.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "lernpfadprismen.wordpress.com.masse.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "2gewinnt.wordpress.com.uns.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "alexander-klier.net.zeitphilosophie.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bunterepublik.wordpress.com.talstrasse.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "together.ch.schaffhausen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "aktion-hummelschutz.de.hummeln.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "singapur-reiseinfo.de.abc.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "lavazza.de.qualita.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "rheinruhronline.de.essenwestviertel.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bayrische-bembel.de.504.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "disfunctions.de.podcasts.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "journal.3960.org.firefox.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "beyssonmanagement.com.innovation.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "damianduchamps.wordpress.com.hbdi.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "sladisworld.wordpress.com.sigma.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "regiolanda.de.filmbuero.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "piratenpartei.at.grundeinkommen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "unsere-zeitung.at.inklusion.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "sprechwaisen.com.sw082.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "unterwegsinberlin.de.friedrichsfelde.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "rent-a-salesman.eu.auslagern.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "wolfgangschmale.eu.duchhardt.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "netzfueralle.blog.rosalux.de.netzpolitik.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "creativecommons.ch.wie.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "arsnova.thm.de.frag.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "ejwue.de.lieferketten.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "pinup-fashion.de.korsetts.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "parallels.com.desktop.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "baike.baidu.com.tanya.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tofugu.com.dezuka-suisan.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "madame.lefigaro.fr.dintestin.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "assabah.com.tn.article.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "taz.de.siemens.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "fivethirtyeight.com.endorsement.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "parcoabruzzo.it.58354.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "scmp.com.playbook.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "medium.com.recherche.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "happyface313.com.plantur.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "limespace.de.entloeten.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "chadim.net.schreibstil.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "frau-sabienes.de.konsumsparen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tafelblog.de.europa.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "geburtstagsecke.de.ideen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "der-erfolg-gibt-recht.de.rinderleber.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tell-review.de.heimweh.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "doschu.com.solopreneur.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "blog.teufel.de.leistung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "whiskyverkostung.com.halle.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "gv-bayern.de.portraet.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "interscenar.io.hoeren.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "seglerblog.st\u00f6ssenseer.de.sauber.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "1337kultur.de.picard.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "trails.de.ischgl.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "hearya.com.metal.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "cbsnews.com.carolina.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tonedeaf.thebrag.com.luboku.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "it-learner.de.autotuning.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "aoc.media.archaisme.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "newrepublic.com.neoliberalism.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "chip.de.bestcrypt.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "faz.net.leone.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "it-finanzmagazin.de.creditshelf.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "netzpolitik.org.abmahnungen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "soundofscience.fr.1927.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "theguardian.com.academics.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "laviedesidees.fr.evaluation.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "theplanetarypress.com.forestlands.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "nature.com.telescope.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.peptalks.de.schulnoten.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.modabot.de.serkan.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "d71bfdce9dd246c9a6ee6d08c8b39e4c.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "d60caba9d12c467b9708ec8981cad8aa.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "d44c5ef50718437984dca47627dee96b.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "0b96fc66e2c94f45a1b923ec9a31fcf2.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "0b66696af800472190a76b26faa845d4.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "0a24692a9ea846c1819bd6a5f92a8874.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "ndr.de.podcastcoronavirus140.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "backen.de.maulwurfkuchen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "backenmachtgluecklich.de.zitronenkuchen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "finanztip.de.altersvorsorge.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "vergleich.de.leasen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "financescout24.de.autokredit.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.org.time4talks.com.kinos.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.org.swap-stop.org.shuji.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.org.bewegliche-lettern.de.typography.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.org.dimido.de.marketing.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.org.nesselsetzer.wordpress.com.antipoden.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "gormulus.wordpress.com.durfen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "markeich.de.impressum.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "digitale-exzellenz.de.gesundheitswesen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "handelsblatt.com.grenzschliessungen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "pcgamer.com.darkest.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "uepo.de.glossar.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "fr.de.nordkorea.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "furche.at.achtsam.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "legrandcontinent.eu.heran.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "pcmag.com.platters.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "blog.mondediplo.net.turpitude.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "infocomcgt.fr.caisse.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "giga.de.chrome.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "antary.de.wireshark.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "pocketpc.ch.auslieferung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "linkedin.com.hoeltmann.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "stylegart.de.naturkosmetik.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "fouryears.eu.interning.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "axios.com.future.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "nytimes.com.blackouts.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "siegfried-marcus-berufsschule.at.kft.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "sass-ag.de.index.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.org.tv-orange.de.future.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "harddecor.at.denkmaler.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.org.the-pain.net.silkroad.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "leukefeld-handball.de.leukefeld.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "link.springer.com.1007.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "unocero.com.marcas.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "medicalnewstoday.com.318674.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "medium.com.dokku.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "diem25.org.climate.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "theatlantic.com.disasters.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bettycrocker.com.pineapple.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "cybercook.com.br.sequilho.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "eatsmarter.de.porridge.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "uk.trustpilot.com.reviews.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tine.no.fotballskole.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "vegolosi.it.climate.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "flawlessfood.co.uk.olive.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "healthline.com.fat.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "thepostpartumparty.com.nursery.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "stardewvalleywiki.com.penny.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tomshardware.com.rtx.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "corkbeo.ie.level.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "chocolate.com.pregnant.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "foxyfolksy.com.buttercream.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "youhadmeatgardening.com.lemon.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "standard.co.uk.caribbean.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "popsugar.co.uk.halloween.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "harrypotter.fandom.com.spell.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "Winda w chmurach _ Obyczaje _ Dwutygodnik _ Dwutygodnik.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "Ile jest warta godzina pracy_ W tych krajach praca pop\u0142aca - Forsal.pl.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "Eurostat_ Polska z najni\u017cszym bezrobociem w ca\u0142ej UE.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "_Ziemniaki na sz\u00f3stej, sur\u00f3wka na dziesi\u0105tej_. Jak pomaga\u0107, \u017ceby nie zaszkodzi\u0107_ [PORADNIK W PIGU\u0141CE].html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "villagersandheroes.com.forums.patchnotes.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "plantcaretoday.com.bougainvillea.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "redtri.com.jokes.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "linkedin.com.feed.6341926280803471360.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "fifplay.com.settings.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "duengebehoerde-niedersachsen.de-Sperrfristen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "careelite.de-flaechenverbrauch.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "waldwiesen.net-holl\u00e4nderholzhandel.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "wsl.ch-neubeau.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "slf.ch-lawinensituation.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "vogelwarte.ch-aktionsplan.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "oekolaundbau.de-zweinutzungshuhns.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "handwerksblatt.de-Friseurbesuch.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "deutsche-handwerkszeitung.de-eigentumsvorbehalt.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "handwerk-magazin.de-Angriffe.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "selbst.de-wurmkiste.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "werkzeugforum.de-heizjacke.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "selbermachen.de-wohngewaechshaus.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "mein-schoener-garten.de-topinabur.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "houzz.de-Projekte.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "homify.de-Tischdecke.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bauemotion.de-schneereampflicht.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "outdoor-magazin.com-vanlife.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "alpin.de-freeride.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bike-magazin.de-strava.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "mtb-news.de-tubeless.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "lacrux.com-mammut.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "sac-cas.ch-schneesport.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bergsteigen.com-skibergsteigen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "wildundhund.de-bonn.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "jagdoesterreich.at-Parkpl\u00e4tze.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "zoll.de-Tabaksteuer.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "motor1.de-erwischt.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "auto-motor.at-hyundaitest.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "auto.oe24.at-golfchina.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "motor.at-elektroroller.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bund.net-hermlin.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "hss.de-Regierung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "feuerwehrverband.de-Brandschutzerziehung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bundesfeuerwehrverband.at-er\u00f6ffnet.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "thw.de-frauen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "caritas.de-Pr\u00e4sidentin.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bundespolizei.de-Belarus.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tierschutzpartei.de-wildvogelauffang.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "katzen-forum.net-Pepe.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "mitundvoneinander.com-Fr\u00fchling.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "francais.radio.cz-ministre.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.org-travaillent.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "ekd.de-Friedensdekade.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "ekhn.de-Pflegefinanzierung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "erzbistum-koeln.de-Totenmonat.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "piratenpatei.de-Entlarvt.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "livenet.ch-sprache.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "fisch-hitparade.de-alkohhol.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "anglerboard.de-rute.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "fischundfang.de-pop-ups.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "hejfish.com-stephan.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "angelmagazin.de-schmerzen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "mannschaft.com-katar.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "lsvd.de-afghanistan.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "siegessaeule.de-Machtinstrument.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "l-mag.de-Holocaust-Gedenken.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "maenner.media-church.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "falstaff.de-burgenland.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "silkes-weinkeller.de-dekantieren.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "umweltbundesamt.de-atomkraft.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bmwi.de-neubau.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bafa.de-mineraloelabsatz.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bmas.de-anforderungen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bmfsfj.de-praesidentschaft.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bfs.de-radon.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bmbf.de-forschungsprojekt.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bmel.de-zukunftsforum.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bundesrat.de-erinnerungen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "haustiermagazin.com-katzenspielzeug.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "eurosport.de-corona.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "laola1.at-barisic.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "sportnews.bz-peking.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "golfpost.de-premiere.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "motorsport-total.com-romeo.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "motorsport-magazin.com-alphatauri.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "autosprint.ch-pistenstopp.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "berkutschi.com-willingen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "rhein-neckar-loewen.de-vorverkauf.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "biathlonword.com-chinesisch.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "boxen1.com-ring-r\u00fcckkehr.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "spox.com-corona-fealle.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tennisnet.com-ueberraschungen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "dtb.de-kulturwandel.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "reiterrevue.de-heulage.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "pferderevue.at-\u00fcbung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "natuerliche-jagd.de-seminar.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "gruene-bundestag.de-klima-und-artenschutz.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "feuerwehrverband.de-vorbereitungstagung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "gitarrebass.de-dieneue.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "peta.de-veterin\u00e4r\u00e4mter.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "macwelt.de-warten.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "lidl.de-nachhaltigkeit.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "nestle-marktplatz.de-produkttest.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "zfk.de.waermepumpen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "internetchemie.info.Heliumkerne.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "enwb.com.windpark.steinheim.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "oekologisch-bauen.info.energieeffizienz.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "battery-news.de.ultium-cells.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "Solarserver.de.solarthermisches kraftwerk dubai.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "energiezukunft.eu.bioenergie.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "erneuerbareenergien.de.seeboden.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "dvg.de.weihnachtsurlaub.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "cleanthinking.de.oranger-wasserstoff.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "mpimet.de.klimasystem.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "recyclingmagazin.de.lithium.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "dvgw.de.heizug.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "agrarheute.com.abfallholz.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "scinexx.com.ammoniak.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "greenpeace.de.nachhaltigleben.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "topagrar.com.schnee.solat.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bund.net.akw.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "goodnight.at.konzert.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "thisisjanewayne.com.bauch.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "amazedmag.de.meinleben.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "theoriginalcopy.de.baby.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "beige.de.suedfrankreich.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "wmn.de.krankheit.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "fitforfun.de.sozialeaengste.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "womenshealth.de.weihnachten.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "madymorrsion.com.energy.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "emotion.de.selfcare.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "greator.com.innerezufriedenheit.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "impulse.de.eltern.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "business-punk.com.fitness.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "erfolg-magazin.de.konfliktkultur.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "humanresourcesmanager.de.diversity.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "strive-magazin.de.dating.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bewusster-leben.de.hope.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "courgage-online.de.HIV.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "she-works.de.sport.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "coaching-magazin.de.transgenerationales-coaching.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "hrjournal.de.trends.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "ad-magazin.de.wellness.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "iconmagazine.de.sharonstone.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "baumeister.de.sportzentrum.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "decohome.de.magenta.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "familie.de.montessori.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "peppermynta.de.fairfashion.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "fogsmagazin.com.outdoor.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "eltiempo.com-candidatos.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "ambito.com-paritarias.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "24ora.com-internationalschol.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "paginasiete.bo-carabineros.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "brasil247.com-militares.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "gazetadopovo.com.br-pacheco.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "campograndenews.com.br-adolescente.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "elespectador.com-orion.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "minuto30-lasierra.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "ultimahora.com-apelacion.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "elcomercio.pe-kenjifujimori.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "trome.pe-chollywood.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "elperuanoa.pe-logran.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "elpais.com.uy-gobierno.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "viconsortium.com-cocaine.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "elenacional.com-carta.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "dawo-dresden.de-Winterausstellung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "dietagespresse.com-halloween.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "elavegan.com-Peanut.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "exxpress.at-zaehne.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "finanzmarktwelt.de-Benko-Firma.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "freshideen.com-Stollenfest.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "badische-zeitung.de-Wohnungssuche.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "groove.de-Anti-A100-Aktivist.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "hildesheimer-presse.de-hund.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "industriemagazin.at-Luftfahrtbranche.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "infosperber.ch-Madagaskar.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "SW1.News-Heimat.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "apolut.net-Sonja-Silberhorn.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "kinzig.news-Nachhaltigkeit.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "lokalo.de-Weinbergsbahnen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "makronom.de-Ressourcenschutzgesetz.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "mein-mmo.de-MMORPG.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "nachtkritik.de-Dragqueens.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "nh24.de-Bundeswehr.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "omr.com-Schuhbrand.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "OnlineMarketing.de-Instagram.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "Osthessen-news.de-Buergermeisterwahl.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "peppermynta.de-Strickmode.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "pinkstinks.de-Kulturtechnik.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "Popkultur.de-Schauspieler.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "reitschuster.de-Hass-Demo.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "t3n.de-Laufzeit.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tarnkappe.info-Black.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tegernseerstimme.de-Klimavorreiter.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "unzensuriert.at-Zeche.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "utopia.de-Werbung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "volksblatt.at-Alkoholkonsum.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "1000things.at-Wellnessoasen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "5min.at-Villachs.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "kxan.com-Voters.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "laweekly.com-Cultivation.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "observer.com-LVMH.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "abc7news.com-Napa.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "villagevoice.com-Party.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "metrotimes.com-Mezcal.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "kulturkaufhaus.de-basteln.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "geeks3d.com.hacklab.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "github.com.yapapi.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "german.stackexchange.com.ausgeraubt.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "thebalance.com.coinbase.html"
+      }
+    ],
+    "rust-readability": [
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "kulinariaathome.com.mandelpl\u00e4tzchen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "denkanstoos.com.2012.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "ebrosia.de.zinfandel.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "landwirt.com.sensortechnik.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "schleifen.ucoz.de.briefe.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "simplyscience.ch.erdoel.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "love-hina.ch.0409.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "spektrum.de.engelbart.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "austria.info.radfahren.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "buchperlen.wordpress.com.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "futurezone.at.lyft.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "moritz-meyer.net.vreni.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "gruen-digital.de.jahrestagung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "telemedicus.info.rezension.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "cnet.de.schutz.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "sueddeutsche.de.flixtrain.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "adac.de.kindersitze.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "computerbase.de.htc.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "meedia.de.freenet.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "incurvy.de.wellness.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "speicherguide.de.schwierige.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "novalanalove.com.ear-candy.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "franziska-elea.de.vuitton.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "changelog.blog.zwischenbilanz.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "threatpost.com.android.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "crazy-julia.de.tipps.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "skateboardmsm.de.dormhagen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "en.wikipedia.org.tsne.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "mixed.de.vrodo.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "github.blog.spiceland.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "chip.de.beef.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "franceculture.fr.idees.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "vancouversun.com.microsoft.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "nmb-media.de.ebay.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bibliothek2null.de.mai.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "de.globalvoices.org.nicaragua.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "creeny.wordpress.com.nebelsuppe.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "wiki.piratenpartei.de.stammtisch.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "gnadlib.wordpress.com.scherenschnitt.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "spontis.de.jahrzehnt.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "lernpfadprismen.wordpress.com.masse.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "2gewinnt.wordpress.com.uns.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "alexander-klier.net.zeitphilosophie.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bunterepublik.wordpress.com.talstrasse.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "together.ch.schaffhausen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "aktion-hummelschutz.de.hummeln.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "singapur-reiseinfo.de.abc.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "lavazza.de.qualita.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "rheinruhronline.de.essenwestviertel.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bayrische-bembel.de.504.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "disfunctions.de.podcasts.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "journal.3960.org.firefox.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "beyssonmanagement.com.innovation.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "damianduchamps.wordpress.com.hbdi.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "sladisworld.wordpress.com.sigma.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "regiolanda.de.filmbuero.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "piratenpartei.at.grundeinkommen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "unsere-zeitung.at.inklusion.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "sprechwaisen.com.sw082.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "unterwegsinberlin.de.friedrichsfelde.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "rent-a-salesman.eu.auslagern.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "wolfgangschmale.eu.duchhardt.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "netzfueralle.blog.rosalux.de.netzpolitik.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "creativecommons.ch.wie.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "arsnova.thm.de.frag.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "ejwue.de.lieferketten.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "pinup-fashion.de.korsetts.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "parallels.com.desktop.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "baike.baidu.com.tanya.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tofugu.com.dezuka-suisan.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "madame.lefigaro.fr.dintestin.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "assabah.com.tn.article.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "taz.de.siemens.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "fivethirtyeight.com.endorsement.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "parcoabruzzo.it.58354.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "scmp.com.playbook.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "medium.com.recherche.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "happyface313.com.plantur.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "limespace.de.entloeten.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "chadim.net.schreibstil.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "frau-sabienes.de.konsumsparen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tafelblog.de.europa.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "geburtstagsecke.de.ideen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "der-erfolg-gibt-recht.de.rinderleber.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tell-review.de.heimweh.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "doschu.com.solopreneur.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "blog.teufel.de.leistung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "whiskyverkostung.com.halle.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "gv-bayern.de.portraet.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "interscenar.io.hoeren.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "seglerblog.st\u00f6ssenseer.de.sauber.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "1337kultur.de.picard.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "trails.de.ischgl.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "hearya.com.metal.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "cbsnews.com.carolina.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tonedeaf.thebrag.com.luboku.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "it-learner.de.autotuning.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "aoc.media.archaisme.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "newrepublic.com.neoliberalism.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "chip.de.bestcrypt.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "faz.net.leone.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "it-finanzmagazin.de.creditshelf.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "netzpolitik.org.abmahnungen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "soundofscience.fr.1927.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "theguardian.com.academics.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "laviedesidees.fr.evaluation.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "theplanetarypress.com.forestlands.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "nature.com.telescope.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.peptalks.de.schulnoten.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.modabot.de.serkan.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "d71bfdce9dd246c9a6ee6d08c8b39e4c.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "d60caba9d12c467b9708ec8981cad8aa.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "d44c5ef50718437984dca47627dee96b.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "0b96fc66e2c94f45a1b923ec9a31fcf2.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "0b66696af800472190a76b26faa845d4.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "0a24692a9ea846c1819bd6a5f92a8874.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "ndr.de.podcastcoronavirus140.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "backen.de.maulwurfkuchen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "backenmachtgluecklich.de.zitronenkuchen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "finanztip.de.altersvorsorge.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "vergleich.de.leasen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "financescout24.de.autokredit.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.org.time4talks.com.kinos.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.org.swap-stop.org.shuji.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.org.bewegliche-lettern.de.typography.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.org.dimido.de.marketing.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.org.nesselsetzer.wordpress.com.antipoden.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "gormulus.wordpress.com.durfen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "markeich.de.impressum.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "digitale-exzellenz.de.gesundheitswesen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "handelsblatt.com.grenzschliessungen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "pcgamer.com.darkest.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "uepo.de.glossar.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "fr.de.nordkorea.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "furche.at.achtsam.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "legrandcontinent.eu.heran.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "pcmag.com.platters.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "blog.mondediplo.net.turpitude.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "infocomcgt.fr.caisse.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "giga.de.chrome.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "antary.de.wireshark.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "pocketpc.ch.auslieferung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "linkedin.com.hoeltmann.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "stylegart.de.naturkosmetik.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "fouryears.eu.interning.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "axios.com.future.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "nytimes.com.blackouts.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "siegfried-marcus-berufsschule.at.kft.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "sass-ag.de.index.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.org.tv-orange.de.future.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "harddecor.at.denkmaler.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.org.the-pain.net.silkroad.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "leukefeld-handball.de.leukefeld.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "link.springer.com.1007.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "unocero.com.marcas.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "medicalnewstoday.com.318674.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "medium.com.dokku.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "diem25.org.climate.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "theatlantic.com.disasters.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bettycrocker.com.pineapple.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "cybercook.com.br.sequilho.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "eatsmarter.de.porridge.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "uk.trustpilot.com.reviews.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tine.no.fotballskole.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "vegolosi.it.climate.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "flawlessfood.co.uk.olive.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "healthline.com.fat.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "thepostpartumparty.com.nursery.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "stardewvalleywiki.com.penny.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tomshardware.com.rtx.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "corkbeo.ie.level.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "chocolate.com.pregnant.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "foxyfolksy.com.buttercream.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "youhadmeatgardening.com.lemon.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "standard.co.uk.caribbean.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "popsugar.co.uk.halloween.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "harrypotter.fandom.com.spell.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "Winda w chmurach _ Obyczaje _ Dwutygodnik _ Dwutygodnik.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "Ile jest warta godzina pracy_ W tych krajach praca pop\u0142aca - Forsal.pl.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "Eurostat_ Polska z najni\u017cszym bezrobociem w ca\u0142ej UE.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "_Ziemniaki na sz\u00f3stej, sur\u00f3wka na dziesi\u0105tej_. Jak pomaga\u0107, \u017ceby nie zaszkodzi\u0107_ [PORADNIK W PIGU\u0141CE].html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "villagersandheroes.com.forums.patchnotes.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "plantcaretoday.com.bougainvillea.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "redtri.com.jokes.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "linkedin.com.feed.6341926280803471360.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "fifplay.com.settings.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "duengebehoerde-niedersachsen.de-Sperrfristen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "careelite.de-flaechenverbrauch.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "waldwiesen.net-holl\u00e4nderholzhandel.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "wsl.ch-neubeau.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "slf.ch-lawinensituation.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "vogelwarte.ch-aktionsplan.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "oekolaundbau.de-zweinutzungshuhns.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "handwerksblatt.de-Friseurbesuch.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "deutsche-handwerkszeitung.de-eigentumsvorbehalt.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "handwerk-magazin.de-Angriffe.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "selbst.de-wurmkiste.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "werkzeugforum.de-heizjacke.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "selbermachen.de-wohngewaechshaus.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "mein-schoener-garten.de-topinabur.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "houzz.de-Projekte.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "homify.de-Tischdecke.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bauemotion.de-schneereampflicht.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "outdoor-magazin.com-vanlife.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "alpin.de-freeride.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bike-magazin.de-strava.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "mtb-news.de-tubeless.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "lacrux.com-mammut.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "sac-cas.ch-schneesport.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bergsteigen.com-skibergsteigen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "wildundhund.de-bonn.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "jagdoesterreich.at-Parkpl\u00e4tze.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "zoll.de-Tabaksteuer.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "motor1.de-erwischt.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "auto-motor.at-hyundaitest.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "auto.oe24.at-golfchina.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "motor.at-elektroroller.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bund.net-hermlin.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "hss.de-Regierung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "feuerwehrverband.de-Brandschutzerziehung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bundesfeuerwehrverband.at-er\u00f6ffnet.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "thw.de-frauen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "caritas.de-Pr\u00e4sidentin.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bundespolizei.de-Belarus.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tierschutzpartei.de-wildvogelauffang.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "katzen-forum.net-Pepe.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "mitundvoneinander.com-Fr\u00fchling.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "francais.radio.cz-ministre.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "archive.org-travaillent.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "ekd.de-Friedensdekade.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "ekhn.de-Pflegefinanzierung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "erzbistum-koeln.de-Totenmonat.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "piratenpatei.de-Entlarvt.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "livenet.ch-sprache.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "fisch-hitparade.de-alkohhol.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "anglerboard.de-rute.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "fischundfang.de-pop-ups.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "hejfish.com-stephan.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "angelmagazin.de-schmerzen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "mannschaft.com-katar.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "lsvd.de-afghanistan.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "siegessaeule.de-Machtinstrument.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "l-mag.de-Holocaust-Gedenken.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "maenner.media-church.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "falstaff.de-burgenland.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "silkes-weinkeller.de-dekantieren.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "umweltbundesamt.de-atomkraft.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bmwi.de-neubau.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bafa.de-mineraloelabsatz.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bmas.de-anforderungen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bmfsfj.de-praesidentschaft.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bfs.de-radon.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bmbf.de-forschungsprojekt.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bmel.de-zukunftsforum.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bundesrat.de-erinnerungen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "haustiermagazin.com-katzenspielzeug.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "eurosport.de-corona.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "laola1.at-barisic.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "sportnews.bz-peking.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "golfpost.de-premiere.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "motorsport-total.com-romeo.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "motorsport-magazin.com-alphatauri.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "autosprint.ch-pistenstopp.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "berkutschi.com-willingen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "rhein-neckar-loewen.de-vorverkauf.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "biathlonword.com-chinesisch.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "boxen1.com-ring-r\u00fcckkehr.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "spox.com-corona-fealle.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tennisnet.com-ueberraschungen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "dtb.de-kulturwandel.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "reiterrevue.de-heulage.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "pferderevue.at-\u00fcbung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "natuerliche-jagd.de-seminar.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "gruene-bundestag.de-klima-und-artenschutz.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "feuerwehrverband.de-vorbereitungstagung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "gitarrebass.de-dieneue.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "peta.de-veterin\u00e4r\u00e4mter.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "macwelt.de-warten.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "lidl.de-nachhaltigkeit.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "nestle-marktplatz.de-produkttest.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "zfk.de.waermepumpen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "internetchemie.info.Heliumkerne.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "enwb.com.windpark.steinheim.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "oekologisch-bauen.info.energieeffizienz.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "battery-news.de.ultium-cells.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "Solarserver.de.solarthermisches kraftwerk dubai.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "energiezukunft.eu.bioenergie.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "erneuerbareenergien.de.seeboden.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "dvg.de.weihnachtsurlaub.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "cleanthinking.de.oranger-wasserstoff.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "mpimet.de.klimasystem.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "recyclingmagazin.de.lithium.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "dvgw.de.heizug.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "agrarheute.com.abfallholz.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "scinexx.com.ammoniak.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "greenpeace.de.nachhaltigleben.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "topagrar.com.schnee.solat.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bund.net.akw.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "goodnight.at.konzert.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "thisisjanewayne.com.bauch.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "amazedmag.de.meinleben.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "theoriginalcopy.de.baby.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "beige.de.suedfrankreich.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "wmn.de.krankheit.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "fitforfun.de.sozialeaengste.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "womenshealth.de.weihnachten.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "madymorrsion.com.energy.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "emotion.de.selfcare.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "greator.com.innerezufriedenheit.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "impulse.de.eltern.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "business-punk.com.fitness.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "erfolg-magazin.de.konfliktkultur.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "humanresourcesmanager.de.diversity.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "strive-magazin.de.dating.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "bewusster-leben.de.hope.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "courgage-online.de.HIV.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "she-works.de.sport.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "coaching-magazin.de.transgenerationales-coaching.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "hrjournal.de.trends.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "ad-magazin.de.wellness.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "iconmagazine.de.sharonstone.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "baumeister.de.sportzentrum.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "decohome.de.magenta.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "familie.de.montessori.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "peppermynta.de.fairfashion.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "fogsmagazin.com.outdoor.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "eltiempo.com-candidatos.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "ambito.com-paritarias.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "24ora.com-internationalschol.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "paginasiete.bo-carabineros.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "brasil247.com-militares.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "gazetadopovo.com.br-pacheco.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "campograndenews.com.br-adolescente.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "elespectador.com-orion.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "minuto30-lasierra.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "ultimahora.com-apelacion.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "elcomercio.pe-kenjifujimori.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "trome.pe-chollywood.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "elperuanoa.pe-logran.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "elpais.com.uy-gobierno.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "viconsortium.com-cocaine.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "elenacional.com-carta.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "dawo-dresden.de-Winterausstellung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "dietagespresse.com-halloween.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "elavegan.com-Peanut.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "exxpress.at-zaehne.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "finanzmarktwelt.de-Benko-Firma.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "freshideen.com-Stollenfest.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "badische-zeitung.de-Wohnungssuche.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "groove.de-Anti-A100-Aktivist.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "hildesheimer-presse.de-hund.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "industriemagazin.at-Luftfahrtbranche.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "infosperber.ch-Madagaskar.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "SW1.News-Heimat.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "apolut.net-Sonja-Silberhorn.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "kinzig.news-Nachhaltigkeit.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "lokalo.de-Weinbergsbahnen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "makronom.de-Ressourcenschutzgesetz.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "mein-mmo.de-MMORPG.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "nachtkritik.de-Dragqueens.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "nh24.de-Bundeswehr.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "omr.com-Schuhbrand.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "OnlineMarketing.de-Instagram.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "Osthessen-news.de-Buergermeisterwahl.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "peppermynta.de-Strickmode.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "pinkstinks.de-Kulturtechnik.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "Popkultur.de-Schauspieler.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "reitschuster.de-Hass-Demo.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "t3n.de-Laufzeit.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tarnkappe.info-Black.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "tegernseerstimme.de-Klimavorreiter.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "unzensuriert.at-Zeche.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "utopia.de-Werbung.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "volksblatt.at-Alkoholkonsum.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "1000things.at-Wellnessoasen.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "5min.at-Villachs.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "kxan.com-Voters.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "laweekly.com-Cultivation.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "observer.com-LVMH.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "abc7news.com-Napa.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "villagevoice.com-Party.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "metrotimes.com-Mezcal.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "kulturkaufhaus.de-basteln.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "geeks3d.com.hacklab.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "github.com.yapapi.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "german.stackexchange.com.ausgeraubt.html"
+      },
+      {
+        "fields": [
+          "html"
+        ],
+        "file": "thebalance.com.coinbase.html"
+      }
+    ]
+  },
+  "full_corpus_sha256": "0e8b21bc8c28a88a90d891d91020a21aab95a2cfa83f761dd2b1642d98c757ea",
+  "median_ms": {
+    "codeberg": 2003.8156365,
+    "go-readability": 1964.7417135,
+    "rust-readability": 1860.976498
+  },
+  "negative_snippets": 2948,
+  "options": "default parser, fresh parser per page, supplied original URL",
+  "pages": 983,
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "positive_snippets": 2935,
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "quality": {
+    "codeberg": {
+      "accuracy": 0.8774434812170662,
+      "counts": {
+        "false_negatives": 334,
+        "false_positives": 387,
+        "true_negatives": 2561,
+        "true_positives": 2601
+      },
+      "errors": [
+        "rnz.de.witzel.html: the Node field is nil",
+        "juliasleseblog.blogspot.com.irland.html: the Node field is nil",
+        "changenow.de.loibl.html: the Node field is nil",
+        "bundeswehrkarriere.de.Laura.html: the Node field is nil",
+        "wevolver.com.vehicle.html: the Node field is nil",
+        "workable.com.gousto.html: the Node field is nil",
+        "camping.info-ligurien.html: the Node field is nil"
+      ],
+      "f1": 0.8782711463785244,
+      "precision": 0.8704819277108434,
+      "recall": 0.8862010221465076
+    },
+    "codeberg-aligned": {
+      "accuracy": 0.8774434812170662,
+      "counts": {
+        "false_negatives": 334,
+        "false_positives": 387,
+        "true_negatives": 2561,
+        "true_positives": 2601
+      },
+      "errors": [
+        "rnz.de.witzel.html: the Node field is nil",
+        "juliasleseblog.blogspot.com.irland.html: the Node field is nil",
+        "changenow.de.loibl.html: the Node field is nil",
+        "bundeswehrkarriere.de.Laura.html: the Node field is nil",
+        "wevolver.com.vehicle.html: the Node field is nil",
+        "workable.com.gousto.html: the Node field is nil",
+        "camping.info-ligurien.html: the Node field is nil"
+      ],
+      "f1": 0.8782711463785244,
+      "precision": 0.8704819277108434,
+      "recall": 0.8862010221465076
+    },
+    "go-readability": {
+      "accuracy": 0.8774434812170662,
+      "counts": {
+        "false_negatives": 334,
+        "false_positives": 387,
+        "true_negatives": 2561,
+        "true_positives": 2601
+      },
+      "errors": [
+        "rnz.de.witzel.html: the Node field is nil",
+        "juliasleseblog.blogspot.com.irland.html: the Node field is nil",
+        "changenow.de.loibl.html: the Node field is nil",
+        "bundeswehrkarriere.de.Laura.html: the Node field is nil",
+        "wevolver.com.vehicle.html: the Node field is nil",
+        "workable.com.gousto.html: the Node field is nil",
+        "camping.info-ligurien.html: the Node field is nil"
+      ],
+      "f1": 0.8782711463785244,
+      "precision": 0.8704819277108434,
+      "recall": 0.8862010221465076
+    },
+    "rust-readability": {
+      "accuracy": 0.8774434812170662,
+      "counts": {
+        "false_negatives": 334,
+        "false_positives": 387,
+        "true_negatives": 2561,
+        "true_positives": 2601
+      },
+      "errors": [
+        "rnz.de.witzel.html: the Node field is nil",
+        "juliasleseblog.blogspot.com.irland.html: the Node field is nil",
+        "changenow.de.loibl.html: the Node field is nil",
+        "bundeswehrkarriere.de.Laura.html: the Node field is nil",
+        "wevolver.com.vehicle.html: the Node field is nil",
+        "workable.com.gousto.html: the Node field is nil",
+        "camping.info-ligurien.html: the Node field is nil"
+      ],
+      "f1": 0.8782711463785244,
+      "precision": 0.8704819277108434,
+      "recall": 0.8862010221465076
+    }
+  },
+  "range_ms": {
+    "codeberg": [
+      1889.358267,
+      3335.965622
+    ],
+    "go-readability": [
+      1824.650671,
+      2783.941019
+    ],
+    "rust-readability": [
+      1702.398312,
+      2324.321527
+    ]
+  },
+  "rust_fork_differences": [],
+  "samples": [
+    {
+      "codeberg": 3335965622,
+      "go-readability": 2783941019,
+      "order": [
+        "codeberg",
+        "go-readability",
+        "rust-readability"
+      ],
+      "rust-readability": 2209712936
+    },
+    {
+      "codeberg": 2199678741,
+      "go-readability": 1978518302,
+      "order": [
+        "codeberg",
+        "rust-readability",
+        "go-readability"
+      ],
+      "rust-readability": 1914341318
+    },
+    {
+      "codeberg": 2059850299,
+      "go-readability": 1943339700,
+      "order": [
+        "go-readability",
+        "codeberg",
+        "rust-readability"
+      ],
+      "rust-readability": 1807611678
+    },
+    {
+      "codeberg": 1945421682,
+      "go-readability": 2400172960,
+      "order": [
+        "go-readability",
+        "rust-readability",
+        "codeberg"
+      ],
+      "rust-readability": 2324321527
+    },
+    {
+      "codeberg": 1914290423,
+      "go-readability": 2090589637,
+      "order": [
+        "rust-readability",
+        "codeberg",
+        "go-readability"
+      ],
+      "rust-readability": 2029442455
+    },
+    {
+      "codeberg": 2138682406,
+      "go-readability": 1950965125,
+      "order": [
+        "rust-readability",
+        "go-readability",
+        "codeberg"
+      ],
+      "rust-readability": 1800222602
+    },
+    {
+      "codeberg": 1955010506,
+      "go-readability": 2116833676,
+      "order": [
+        "codeberg",
+        "go-readability",
+        "rust-readability"
+      ],
+      "rust-readability": 1979422366
+    },
+    {
+      "codeberg": 1889358267,
+      "go-readability": 1824650671,
+      "order": [
+        "codeberg",
+        "rust-readability",
+        "go-readability"
+      ],
+      "rust-readability": 1707138277
+    },
+    {
+      "codeberg": 1933806627,
+      "go-readability": 2006265620,
+      "order": [
+        "go-readability",
+        "codeberg",
+        "rust-readability"
+      ],
+      "rust-readability": 1702398312
+    },
+    {
+      "codeberg": 1966975236,
+      "go-readability": 1842551688,
+      "order": [
+        "go-readability",
+        "rust-readability",
+        "codeberg"
+      ],
+      "rust-readability": 1775339935
+    },
+    {
+      "codeberg": 2040656037,
+      "go-readability": 1861887508,
+      "order": [
+        "rust-readability",
+        "codeberg",
+        "go-readability"
+      ],
+      "rust-readability": 2184151835
+    },
+    {
+      "codeberg": 2109210761,
+      "go-readability": 1840979051,
+      "order": [
+        "rust-readability",
+        "go-readability",
+        "codeberg"
+      ],
+      "rust-readability": 1758734522
+    }
+  ],
+  "speedup_vs_codeberg": {
+    "codeberg": 1.0,
+    "go-readability": 1.0198875621826105,
+    "rust-readability": 1.076754939491987
+  },
+  "timing_scope": "pre-parsed DOM extraction, plain-text rendering and case-sensitive snippet scoring; excludes input I/O, decoding, initial parsing, startup, IPC and extra quality-pass HTML/metadata collection",
+  "warmups": [
+    {
+      "codeberg": 3513678906,
+      "go-readability": 2296489496,
+      "order": [
+        "codeberg",
+        "go-readability",
+        "rust-readability"
+      ],
+      "rust-readability": 2039099693
+    },
+    {
+      "codeberg": 2264321049,
+      "go-readability": 1986693439,
+      "order": [
+        "codeberg",
+        "rust-readability",
+        "go-readability"
+      ],
+      "rust-readability": 1747816616
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "adaptations": [
+    "Go stream-safe normalization before and after soft-hyphen removal"
+  ],
+  "archive_sha256": "86ee78455228a72f9133dbd11b51c85fd13fc9b3cb4b708bd239671f71d489b6",
+  "crate": "rust-domdistiller",
+  "files": {
+    "licenses/LICENSE-chardet.txt": "44699611628b82dec802229cd039c401b6df44808eeb5dc873698255a0642d04",
+    "licenses/LICENSE-domdistiller.txt": "1c54129c60c300548c4f28ce8a9d348def9f2d6295aacc0a719c709ec7a3a84a",
+    "licenses/LICENSE-go.txt": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+    "licenses/LICENSE-shiori.txt": "eda05bafdea921ce34e502fbd2c3d5c508b7601b8b592e2a0bd48eaa451ca632",
+    "licenses/icu-license.html": "b82a5901d92c842c78feb7ffc757706967a23fd5e7658d30ea92abb169207867",
+    "src/encoding.rs": "3dd77c195aff383b85c8db4e1c011a0a90f8573f9c1309e961281c9ddc7ea54d",
+    "src/encoding/decoder.rs": "c824ff47089cd30b307983ca9b8112595e20775549db31d56f64c2f471e98110",
+    "src/encoding/tables.rs": "6d445b77680af310e7f4cc9486d1a53176f619692238d1e87b63bf02becabad2"
+  },
+  "upstream_files": {
+    "licenses/LICENSE-chardet.txt": "44699611628b82dec802229cd039c401b6df44808eeb5dc873698255a0642d04",
+    "licenses/LICENSE-domdistiller.txt": "1c54129c60c300548c4f28ce8a9d348def9f2d6295aacc0a719c709ec7a3a84a",
+    "licenses/LICENSE-go.txt": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+    "licenses/LICENSE-shiori.txt": "eda05bafdea921ce34e502fbd2c3d5c508b7601b8b592e2a0bd48eaa451ca632",
+    "licenses/icu-license.html": "b82a5901d92c842c78feb7ffc757706967a23fd5e7658d30ea92abb169207867",
+    "src/encoding.rs": "04b55f4ee11fe44a0aafcdb3362d2987e0bc5307bae5f814a2f6f192a0607585",
+    "src/encoding/decoder.rs": "c824ff47089cd30b307983ca9b8112595e20775549db31d56f64c2f471e98110",
+    "src/encoding/tables.rs": "6d445b77680af310e7f4cc9486d1a53176f619692238d1e87b63bf02becabad2"
+  },
+  "version": "1.0.0"
+}

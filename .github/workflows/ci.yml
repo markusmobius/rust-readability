@@ -1,0 +1,52 @@
+name: Verify
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: rust-readability
+
+jobs:
+  rust:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      TZ: UTC
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: rust-readability
+      - uses: actions/checkout@v4
+        with:
+          repository: markusmobius/go-readabilityV2
+          ref: 79a715a3f36b4eeff0057230c66fc8fb3f0ecdf4
+          path: go-readabilityV2
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: 1.98.1
+          components: rustfmt, clippy
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 1.27.1
+          cache-dependency-path: go-readabilityV2/go.sum
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: cargo fmt --all -- --check
+      - run: cargo test --locked
+      - run: cargo clippy --locked --all-targets -- -D warnings
+      - run: python tools/go_reference.py --native-timezone
+      - run: python tools/go_reference.py --corpus
+      - run: python tools/go_reference.py --html-corpus
+      - run: cargo test --locked --release -- --include-ignored
+      - run: cargo build --locked --release
+      - run: cargo package --locked

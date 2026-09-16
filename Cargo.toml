@@ -1,0 +1,42 @@
+[package]
+name = "rust-readability"
+version = "0.6.0"
+edition = "2021"
+rust-version = "1.98.1"
+description = "Native Rust port of Readeck's Go Readability v2"
+repository = "https://github.com/markusmobius/rust-readability"
+license = "MIT AND BSD-3-Clause AND ICU"
+include = [
+	"Cargo.toml", "Cargo.lock", "rust-toolchain.toml", "README.md", "UPSTREAM.md",
+	"LICENSE", "NOTICE", "licenses/**", "src/**", "testdata/**",
+	"tools/go_reference.py", "tools/go-reference/**",
+]
+
+[dependencies]
+aho-corasick = "1.1.5"
+chrono = "0.4"
+encoding_rs = "0.8.41"
+html5ever = "=0.39.0"
+html5gum = "=0.8.4"
+markup5ever = "=0.14.1"
+markup5ever_rcdom = "=0.39.0"
+percent-encoding = "2.3.2"
+regex = "1.13.1"
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["unbounded_depth"] }
+serde_stacker = "0.1"
+smol_str = "0.3"
+unicode-normalization = "0.1.25"
+tz-rs = "0.7.3"
+zip = { version = "4", default-features = false }
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61.2", features = ["Win32_Foundation", "Win32_System_Time", "Win32_System_Registry"] }
+winreg = "0.55"
+
+[dev-dependencies]
+base64 = "0.22"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
