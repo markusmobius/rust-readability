@@ -1,5 +1,5 @@
 [package]
-name = "rust-readability"
+name = "rust-readability-v2"
 version = "0.6.0"
 edition = "2021"
 rust-version = "1.98.1"
@@ -11,6 +11,9 @@ include = [
 	"LICENSE", "NOTICE", "licenses/**", "src/**", "testdata/**",
 	"tools/go_reference.py", "tools/go-reference/**",
 ]
+
+[lib]
+name = "rust_readability"
 
 [dependencies]
 aho-corasick = "1.1.5"

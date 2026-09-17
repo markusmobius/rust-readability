@@ -10,6 +10,14 @@ Version **0.6.0** requires Rust 1.98.1 and a native C toolchain to build. Extrac
 
 **The library is single-threaded.** Each extraction runs on the calling thread, with no internal worker threads or thread pool. It is suitable for servers running many engines in parallel: give each engine its own parser and input DOM, and let the server control concurrency.
 
+## Installation
+
+```sh
+cargo add rust-readability-v2@0.6.0
+```
+
+The crates.io package is `rust-readability-v2`; the Rust import name is `rust_readability`.
+
 ## Example
 
 ```rust
@@ -85,9 +93,9 @@ Speedup is Go-ReadabilityV2's median time divided by each engine's median time.
 
 | Extractor | Median | Range | Speedup vs Go-ReadabilityV2 |
 | --- | ---: | ---: | ---: |
-| Codeberg Go-Readability v2.1.2 | 2,024 ms | 1,916-2,919 ms | 0.96x |
-| Go-ReadabilityV2 | 1,946 ms | 1,836-2,759 ms | 1.00x |
-| Rust-Readability | 952 ms | 878-1,374 ms | 2.04x |
+| Codeberg Go-Readability v2.1.2 | 2,044 ms | 1,854-2,792 ms | 0.96x |
+| Go-ReadabilityV2 | 1,955 ms | 1,811-2,712 ms | 1.00x |
+| Rust-Readability | 960 ms | 876-1,521 ms | 2.04x |
 
 Rust's median speedup was **2.04x over Go-ReadabilityV2** and **2.13x over
 Codeberg**.
@@ -105,7 +113,7 @@ between runs: these are single-machine measurements, not a guaranteed speedup or
 end-to-end reader/network benchmark.
 
 Raw samples, dependency graphs and source/binary fingerprints are retained in
-[testdata/benchmark-results-0.6.0.json](testdata/benchmark-results-0.6.0.json).
+[testdata/benchmark-results-0.6.0-crate.json](testdata/benchmark-results-0.6.0-crate.json).
 See [UPSTREAM.md](UPSTREAM.md#shared-benchmark) for the runner and reproduction
 instructions. These tables are identical to the Go fork's README tables.
 
