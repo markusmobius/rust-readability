@@ -5,37 +5,45 @@ use html5ever::{
     tendril::StrTendril,
     tokenizer::{Doctype, TagKind, Token, TokenSink, TokenSinkResult, Tokenizer},
     tree_builder::{ElementFlags, NodeOrText, Tracer, TreeBuilder, TreeSink},
-    Attribute, ExpandedName, QualName, TokenizerResult,
+    Attribute, QualName, TokenizerResult,
 };
 use markup5ever_rcdom::{Handle, NodeData, RcDom};
-use std::{borrow::Cow, cell::Cell};
+use std::{borrow::Cow, cell::Cell, marker::PhantomData};
 
 #[derive(Default)]
-struct Sink {
-    dom: RcDom,
+struct Sink<Dom: TreeSink = RcDom> {
+    dom: Dom,
     foreign: Cell<bool>,
     halted: Cell<bool>,
     declaration: Option<Declaration>,
 }
 
-impl TreeSink for Sink {
-    type Handle = Handle;
-    type Output = (RcDom, Option<Declaration>);
-    type ElemName<'node> = ExpandedName<'node>;
+impl<Dom: TreeSink> TreeSink for Sink<Dom> {
+    type Handle = Dom::Handle;
+    type Output = (Dom::Output, Option<Declaration>);
+    type ElemName<'node>
+        = Dom::ElemName<'node>
+    where
+        Self: 'node;
 
     fn finish(self) -> Self::Output {
-        (self.dom, self.declaration)
+        (self.dom.finish(), self.declaration)
     }
     fn parse_error(&self, message: Cow<'static, str>) {
         self.dom.parse_error(message);
     }
-    fn get_document(&self) -> Handle {
+    fn get_document(&self) -> Self::Handle {
         self.dom.get_document()
     }
-    fn elem_name<'node>(&'node self, target: &'node Handle) -> ExpandedName<'node> {
+    fn elem_name<'node>(&'node self, target: &'node Self::Handle) -> Self::ElemName<'node> {
         self.dom.elem_name(target)
     }
-    fn create_element(&self, name: QualName, attrs: Vec<Attribute>, flags: ElementFlags) -> Handle {
+    fn create_element(
+        &self,
+        name: QualName,
+        attrs: Vec<Attribute>,
+        flags: ElementFlags,
+    ) -> Self::Handle {
         if name.ns.as_ref() == "http://www.w3.org/1999/xhtml"
             && name.local.as_ref() == "template"
             && self.foreign.get()
@@ -44,22 +52,22 @@ impl TreeSink for Sink {
         }
         self.dom.create_element(name, attrs, flags)
     }
-    fn create_comment(&self, text: StrTendril) -> Handle {
+    fn create_comment(&self, text: StrTendril) -> Self::Handle {
         self.dom.create_comment(text)
     }
-    fn create_pi(&self, target: StrTendril, data: StrTendril) -> Handle {
+    fn create_pi(&self, target: StrTendril, data: StrTendril) -> Self::Handle {
         self.dom.create_pi(target, data)
     }
-    fn append(&self, parent: &Handle, child: NodeOrText<Handle>) {
+    fn append(&self, parent: &Self::Handle, child: NodeOrText<Self::Handle>) {
         if !self.halted.get() {
             self.dom.append(parent, child);
         }
     }
     fn append_based_on_parent_node(
         &self,
-        element: &Handle,
-        previous: &Handle,
-        child: NodeOrText<Handle>,
+        element: &Self::Handle,
+        previous: &Self::Handle,
+        child: NodeOrText<Self::Handle>,
     ) {
         if !self.halted.get() {
             self.dom
@@ -69,54 +77,64 @@ impl TreeSink for Sink {
     fn append_doctype_to_document(&self, name: StrTendril, public: StrTendril, system: StrTendril) {
         self.dom.append_doctype_to_document(name, public, system);
     }
-    fn get_template_contents(&self, target: &Handle) -> Handle {
+    fn get_template_contents(&self, target: &Self::Handle) -> Self::Handle {
         self.dom.get_template_contents(target)
     }
-    fn same_node(&self, first: &Handle, second: &Handle) -> bool {
+    fn same_node(&self, first: &Self::Handle, second: &Self::Handle) -> bool {
         self.dom.same_node(first, second)
     }
     fn set_quirks_mode(&self, mode: QuirksMode) {
         self.dom.set_quirks_mode(mode);
     }
-    fn append_before_sibling(&self, sibling: &Handle, child: NodeOrText<Handle>) {
+    fn append_before_sibling(&self, sibling: &Self::Handle, child: NodeOrText<Self::Handle>) {
         if !self.halted.get() {
             self.dom.append_before_sibling(sibling, child);
         }
     }
-    fn add_attrs_if_missing(&self, target: &Handle, attrs: Vec<Attribute>) {
+    fn add_attrs_if_missing(&self, target: &Self::Handle, attrs: Vec<Attribute>) {
         self.dom.add_attrs_if_missing(target, attrs);
     }
-    fn remove_from_parent(&self, target: &Handle) {
+    fn remove_from_parent(&self, target: &Self::Handle) {
         self.dom.remove_from_parent(target);
     }
-    fn reparent_children(&self, node: &Handle, parent: &Handle) {
+    fn reparent_children(&self, node: &Self::Handle, parent: &Self::Handle) {
         self.dom.reparent_children(node, parent);
     }
-    fn is_mathml_annotation_xml_integration_point(&self, handle: &Handle) -> bool {
+    fn is_mathml_annotation_xml_integration_point(&self, handle: &Self::Handle) -> bool {
         self.dom.is_mathml_annotation_xml_integration_point(handle)
     }
 }
 
-#[derive(Default)]
-struct Foreign(Cell<bool>);
+pub(super) trait ForeignNode {
+    fn is_foreign_element(&self) -> bool;
+}
 
-impl Tracer for Foreign {
-    type Handle = Handle;
-    fn trace_handle(&self, node: &Handle) {
-        if let NodeData::Element { name, .. } = &node.data {
-            if name.ns.as_ref() != "http://www.w3.org/1999/xhtml" {
-                self.0.set(true);
-            }
+impl ForeignNode for Handle {
+    fn is_foreign_element(&self) -> bool {
+        matches!(&self.data, NodeData::Element { name, .. } if name.ns.as_ref() != "http://www.w3.org/1999/xhtml")
+    }
+}
+
+struct Foreign<Node>(Cell<bool>, PhantomData<Node>);
+
+impl<Node: ForeignNode> Tracer for Foreign<Node> {
+    type Handle = Node;
+    fn trace_handle(&self, node: &Node) {
+        if node.is_foreign_element() {
+            self.0.set(true);
         }
     }
 }
 
-struct Builder(TreeBuilder<Handle, Sink>);
+struct Builder<Dom: TreeSink = RcDom>(TreeBuilder<Dom::Handle, Sink<Dom>>);
 
-impl TokenSink for Builder {
-    type Handle = Handle;
+impl<Dom: TreeSink> TokenSink for Builder<Dom>
+where
+    Dom::Handle: ForeignNode,
+{
+    type Handle = Dom::Handle;
 
-    fn process_token(&self, token: Token, line: u64) -> TokenSinkResult<Handle> {
+    fn process_token(&self, token: Token, line: u64) -> TokenSinkResult<Self::Handle> {
         if self.0.sink.halted.get() {
             return TokenSinkResult::Continue;
         }
@@ -136,7 +154,7 @@ impl TokenSink for Builder {
         } else {
             token
         };
-        let foreign = Foreign::default();
+        let foreign = Foreign(Cell::new(false), PhantomData::<Dom::Handle>);
         if matches!(&token, Token::TagToken(tag) if tag.kind == TagKind::StartTag && tag.name.as_ref() == "template")
         {
             self.0.trace_handles(&foreign);
@@ -158,9 +176,22 @@ impl TokenSink for Builder {
 }
 
 pub(super) fn parse(source: &str) -> (RcDom, Option<Declaration>) {
+    parse_dom_into(source, RcDom::default(), doctype::declaration(source))
+}
+
+pub(super) fn parse_dom_into<Dom: TreeSink>(
+    source: &str,
+    dom: Dom,
+    declaration: Option<Declaration>,
+) -> (Dom::Output, Option<Declaration>)
+where
+    Dom::Handle: ForeignNode,
+{
     let sink = Sink {
-        declaration: doctype::declaration(source),
-        ..Sink::default()
+        dom,
+        declaration,
+        foreign: Cell::new(false),
+        halted: Cell::new(false),
     };
     let tokenizer = Tokenizer::new(
         Builder(TreeBuilder::new(sink, Default::default())),

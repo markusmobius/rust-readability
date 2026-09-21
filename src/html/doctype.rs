@@ -1,6 +1,7 @@
 use crate::{entities::unescape, metadata::lowercase, Attribute};
 use html5gum::{DefaultEmitter, Token, Tokenizer};
 
+#[derive(Clone)]
 pub(super) struct Declaration {
     pub name: String,
     pub attrs: Vec<Attribute>,
