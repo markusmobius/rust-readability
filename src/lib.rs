@@ -17,6 +17,7 @@ mod postprocess;
 mod prepare;
 pub mod render;
 mod score;
+mod shared;
 mod sort;
 mod timestamp;
 mod url;
@@ -32,8 +33,18 @@ pub use html::{
 };
 pub use options::Options;
 pub use parser::{from_document, from_html, from_reader, Parser};
+pub use shared::DomSource;
 pub use timestamp::{LocalTimeZone, Timestamp, TimestampError};
 pub use url::{Url, UrlError};
+
+pub fn decode_bytes(source: &[u8]) -> Result<String, Error> {
+    encoding::decode(source).map_err(|error| Error::ParseInput(Box::new(error)))
+}
+
+pub fn parse_bytes(source: &[u8]) -> Result<Dom, Error> {
+    let decoded = decode_bytes(source)?;
+    Ok(parse_dom(&decoded))
+}
 
 pub const GO_REFERENCE_MODULE: &str = "github.com/markusmobius/go-readabilityV2";
 pub const GO_UPSTREAM_COMMIT: &str = "b18540d99ebf105cd67122585a0a41ec299b70bc";

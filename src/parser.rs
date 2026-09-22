@@ -56,6 +56,14 @@ impl Parser {
         self.parse_cloned(|| document.clone_for_readability(), page_url)
     }
 
+    pub fn parse_shared_document(
+        &mut self,
+        document: &impl crate::DomSource,
+        page_url: Option<&Url>,
+    ) -> Result<Article, Error> {
+        self.parse_dom(&document.copy_for_readability(), page_url)
+    }
+
     pub fn parse_dom_and_mutate(
         &mut self,
         document: &mut Tree,
@@ -183,6 +191,93 @@ pub fn from_reader(input: impl Read, page_url: Option<&Url>) -> Result<Article, 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn shared_document_imports_once_across_retries() {
+        use crate::DomSource;
+
+        struct Source {
+            document: crate::Dom,
+            copies: std::cell::Cell<usize>,
+        }
+
+        impl DomSource for Source {
+            fn node_count(&self) -> usize {
+                self.document.node_count()
+            }
+            fn kind(&self, node: crate::NodeId) -> crate::Kind {
+                self.document.kind(node)
+            }
+            fn tag(&self, node: crate::NodeId) -> &str {
+                self.document.tag(node)
+            }
+            fn data(&self, node: crate::NodeId) -> &str {
+                self.document.data(node)
+            }
+            fn parent(&self, node: crate::NodeId) -> Option<crate::NodeId> {
+                self.document.parent(node)
+            }
+            fn children(&self, node: crate::NodeId) -> &[crate::NodeId] {
+                self.document.children(node)
+            }
+            fn attribute_count(&self, node: crate::NodeId) -> usize {
+                self.document.attribute_count(node)
+            }
+            fn attribute(&self, node: crate::NodeId, attribute: usize) -> (&str, &str, &str) {
+                self.document.attribute(node, attribute)
+            }
+            fn copy_for_readability(&self) -> crate::Dom {
+                self.copies.set(self.copies.get() + 1);
+                self.document.clone()
+            }
+        }
+
+        let source = Source {
+            document: parse_dom("<title>Short article</title><article><p>A short article with useful evidence, details, and context.</p></article>"),
+            copies: std::cell::Cell::new(0),
+        };
+        let snapshot = source.document.clone();
+        let options = Options {
+            char_thresholds: i64::MAX,
+            ..Default::default()
+        };
+        let expected = Parser::with_options(options.clone())
+            .parse_dom(&source.document, None)
+            .unwrap();
+        let actual = Parser::with_options(options)
+            .parse_shared_document(&source, None)
+            .unwrap();
+        assert_eq!(source.copies.get(), 1);
+        assert_eq!(actual.document, expected.document);
+        assert_eq!(actual.node, expected.node);
+        assert_eq!(actual.metadata, expected.metadata);
+        assert_eq!(actual.language, expected.language);
+        assert_eq!(source.document, snapshot);
+    }
+
+    #[test]
+    fn shared_document_preserves_reader_decoding_and_input() {
+        let mut source = b"<html lang='fr'><meta charset='windows-1252'><title>Shared document</title><body><article><p>".to_vec();
+        for _ in 0..20 {
+            source.extend_from_slice(
+                b"An article with caf\xe9, useful details, and several complete sentences. ",
+            );
+        }
+        source.extend_from_slice(b"</p></article></body></html>");
+        let document = crate::parse_bytes(&source).unwrap();
+        let snapshot = document.clone();
+        let expected = Parser::new().parse_reader(source.as_slice(), None).unwrap();
+        for _ in 0..2 {
+            let actual = Parser::new()
+                .parse_shared_document(&document, None)
+                .unwrap();
+            assert_eq!(actual.text().unwrap(), expected.text().unwrap());
+            assert_eq!(actual.html().unwrap(), expected.html().unwrap());
+            assert_eq!(actual.metadata, expected.metadata);
+            assert_eq!(actual.language, expected.language);
+            assert_eq!(document, snapshot);
+        }
+    }
 
     #[test]
     fn owned_parse_preserves_retries_and_input() {

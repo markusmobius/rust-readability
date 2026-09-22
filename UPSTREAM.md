@@ -5,7 +5,7 @@
 The authoritative extraction implementation is the core-only Go-ReadabilityV2 fork, derived from Readeck's v2 branch at v2.1.2, commit `b18540d99ebf105cd67122585a0a41ec299b70bc`. The upstream branch head and tag matched when imported. This is a native port, not a wrapper around a Go command, Mozilla Readability or another Rust extractor.
 
 - Fork module: `github.com/markusmobius/go-readabilityV2`, version 0.6.0, without a `/v2` suffix.
-- Rust package: `rust-readability-v2` 0.6.0 on crates.io, with library import `rust_readability`. The registry package name differs from the repository because `rust_readability` is already owned by another maintainer; crates.io treats hyphens and underscores as equivalent for name uniqueness.
+- Rust package: `rust-readability-v2`, Git release 0.6.2 and crates.io release 0.6.0, with library import `rust_readability`. The registry package name differs from the repository because `rust_readability` is already owned by another maintainer; crates.io treats hyphens and underscores as equivalent for name uniqueness.
 - Fork source tree SHA-256: `7b4ab06ed130e3ff5778dfd69dedc87ce12f63e8c8521e0789e855b19070b064`; per-file hashes and normalization rules are in [testdata/go-source.json](testdata/go-source.json). The content digest identifies the exact core source independently of Git history.
 - Original upstream module: `codeberg.org/readeck/go-readability/v2@v2.1.2`.
 - Original upstream module checksum: `h1:JBrdyYJBRPMBbodLM1b5KxCSDH+JqCkGcuVRD7ICBAw=`.
@@ -28,6 +28,22 @@ Extraction is synchronous and single-threaded. Each server engine owns its parse
 Read-only DOM parsing consumes its private prepared clone for the first extraction attempt. A failed attempt reconstructs the same preparation from the unchanged input, retaining the original retry flags, atoms, cleared namespaces and node layout. Metadata is extracted once. Mutating DOM APIs still retain their preparation mutations, including during unwinding. Forced-retry tests compare the complete result DOM and metadata against the mutating path. No scoring, retry, cleanup or page-selection shortcuts are used.
 
 The HTML adapter uses pinned html5ever 0.39.0 and markup5ever_rcdom 0.39.0. The older parser used by DomDistiller remains unchanged. The adapter preserves Go's formatting-element attribute order, duplicate-attribute handling, namespace adjustments, exact atom dictionary and template-content layout. Comments use Go's entity decoding. Raw leading doctypes are located with html5gum's tokenizer and interpreted in Go's order, including empty identifiers, decoded quotes and quirks decisions. A token/tree sink enforces Go's foreign-content/template termination rule during construction. Its trace hook detects foreign nodes retained by the builder; foreign nodes do not enter HTML's active-formatting list.
+
+The `parse_html_into` / `HtmlTreeSink` API emits the same
+converted nodes into a caller-owned arena. `parse_dom` uses that same conversion
+with its own sink, so attribute, namespace, doctype and comment handling are not
+duplicated in downstream extractors. Emission is parent-first in document order;
+callers supply copyable handles and receive ordered attributes before children.
+This removes the intermediate Readability arena and atom lookup for callers
+that do not need them, but retains the internal HTML5 tree and is not a streaming
+tokenizer. The API is available from Git release 0.6.1 and changes no extraction rules.
+
+`DomSource` and `Parser::parse_shared_document` accept a borrowed shared input
+without changing Readability's internal node types. The source is imported once
+per call, before entering the existing copy-on-write retry path. Forced-retry
+coverage checks one import, complete output equality and input preservation.
+`decode_bytes` and `parse_bytes` expose the existing reader normalization for
+in-memory input; they introduce no new decoding rules.
 
 HTML serialization is a local translation of x/net v0.59.0, including comment escaping, doctype identifiers, void-element failures, literal text in HTML integration contexts, and plaintext aborts. Text serialization follows Readeck's renderer, including queued whitespace, block separators, preformatted text, math annotations and hidden content.
 
@@ -121,6 +137,13 @@ All digests below are SHA-256. The generator verifies exact bytes by default.
 Generated, ignored corpus digests: extraction `babf373615499928e38569c9428efdad738ec4b6876b40c97cde7afd920fc4ae`; HTML parser `8fe4e65bd2f0e99b1257585c49861f069b53e2ed38b6825bf26028f1f778ba2e`. Native timezone records are machine- and year-specific and use separate platform filenames.
 
 ## Verification Status
+
+The unpublished parser-output API was checked on 2026-09-20 with Rust 1.98.1
+Windows/GNU: the 45 previously active library tests and all 1,793 independent Go
+HTML corpus cases passed, followed by a new custom-handle sink contract test.
+No reference fixture was regenerated. Downstream Trafilatura's 13,281 current-Go
+extraction combinations also passed. These local checks do not extend the
+published 0.6.0 timing record below or establish new hosted/platform coverage.
 
 Local verification of version 0.6.0 passed on native Windows x86_64 (GNU toolchain) and Linux/WSL2 x86_64:
 

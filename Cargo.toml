@@ -1,6 +1,6 @@
 [package]
 name = "rust-readability-v2"
-version = "0.6.1"
+version = "0.6.2"
 edition = "2021"
 rust-version = "1.98.1"
 description = "Native Rust port of Readeck's Go Readability v2"

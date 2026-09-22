@@ -6,17 +6,18 @@ The behavioral reference is `github.com/markusmobius/go-readabilityV2`, derived 
 
 The inherited algorithm follows Mozilla Readability.js 0.6.0 plus the Go forks' improvements. Going forward, we strive to mirror Mozilla's original JavaScript Readability through the Go reference. Our philosophy is **bring your own HTML**: fetching, request modifiers, CLI/server functionality and diagnostic parser logging are outside the core library.
 
-Version **0.6.0** requires Rust 1.98.1 and a native C toolchain to build. Extraction does not require a Go or Python runtime.
+Version **0.6.2** requires Rust 1.98.1 and a native C toolchain to build. Extraction does not require a Go or Python runtime.
 
 **The library is single-threaded.** Each extraction runs on the calling thread, with no internal worker threads or thread pool. It is suitable for servers running many engines in parallel: give each engine its own parser and input DOM, and let the server control concurrency.
 
 ## Installation
 
 ```sh
-cargo add rust-readability-v2@0.6.0
+cargo add rust-readability-v2 --git https://github.com/markusmobius/rust-readability --tag v0.6.2
 ```
 
-The crates.io package is `rust-readability-v2`; the Rust import name is `rust_readability`.
+The package name is `rust-readability-v2`; the Rust import name is `rust_readability`.
+Version 0.6.2 is a GitHub source release, not a new crates.io publication.
 
 ## Example
 
@@ -41,6 +42,7 @@ assert!(article.html()?.contains("<p>"));
 ## APIs
 
 - `from_reader` and `Parser::parse_reader` perform Go-compatible charset detection, decoding and stream-safe Unicode normalization before parsing.
+- `decode_bytes` and `parse_bytes` expose that decoding and DOM construction for bytes already in memory, allowing callers to separate file I/O from parsing.
 - `from_html` and `Parser::parse` accept already decoded HTML. They do not apply the reader's normalization.
 - `parse_dom` returns Readability's own `Dom`, including original tag atoms and element namespaces. `Parser::parse_dom` preserves the input; `parse_dom_and_mutate` retains Go's preparation mutations. Prefer these APIs when retaining or constructing Readability DOMs.
 - `parse_html`, `from_document`, `parse_document` and `parse_and_mutate` use Readability's `Document` type. `Dom::new` assigns empty element namespaces and looks up atoms from current tag names. Supply the `Dom` metadata explicitly when importing a Go node whose atom differs from its current tag.
@@ -54,6 +56,44 @@ Metadata getters include title, byline, site name, excerpt, image, favicon, lang
 `published_time` and `modified_time` translate the referenced `itlightning/dateparse` state machine and Go time layouts. `Timestamp` exposes Unix seconds, nanoseconds, zone name and offset in seconds. Missing timestamps return `Error::TimestampMissing`; parse failures retain the field name and source error. Dates without a zone default to UTC. Local zone lookup follows the platform's Go behavior; explicit `*_with_local_timezone` methods allow a `LocalTimeZone` loaded from TZif bytes, the bundled named-zone data, UTC or a fixed offset. The system zone is initialized once. Windows ignores `TZ`, as Go does.
 
 Parser reuse retains Go's language-state behavior. Positive element limits are checked before mutation. Node IDs, links, and metadata vectors must remain consistent when callers edit a `Dom`; it represents parsed HTML node kinds, not Go's renderer-only `RawNode` or `ErrorNode` types.
+
+### Parser Sink
+
+The `parse_html_into(source, &mut sink)` API accepts an
+`HtmlTreeSink` and returns its document handle. It uses the same parser and Go
+node conversion as `parse_dom`, but writes into the caller's arena without
+constructing a Readability `Document` or atom table. It is not a streaming HTML
+tokenizer; parsing still constructs the internal HTML5 tree before emission.
+
+`append_node` is called in document order, parents before children, with borrowed
+kind/tag/namespace/data values. The sink returns its own copyable handle and
+stores the parent relationship. `append_attribute` follows its node before any
+children, retaining Go's namespace/key/value representation and attribute order.
+Element namespaces use `""`, `"svg"`, `"math"` or the unrecognized namespace URI,
+as in `Dom`. Callers must copy strings they retain. The parser sink is available
+in Git releases from 0.6.1 onward.
+
+### Shared Input
+
+`DomSource` is a borrowed view for integration with another document arena.
+`Parser::parse_shared_document` imports it once per extraction and uses the
+existing copy-on-write clones for every retry. It preserves the caller's input;
+it neither reparses HTML nor caches results across calls. The default import
+retains ordered attributes, topology, original tags and element namespaces.
+Implementations must provide consistent, acyclic node indices in `0..node_count`.
+Readability's own `Dom` implements this interface using its existing shared
+storage. The public DOM types and existing extraction APIs are unchanged.
+
+### Patch Qualification
+
+The [paired extraction benchmark](https://github.com/markusmobius/content-extractor-benchmark/blob/5edcfd090f1590c9bbf26d7543fbdc2ab615e117/rust_shared_performance_2026_09_21.json)
+compares 0.6.1 with 0.6.2 in coordinated three-engine Rust suites on 2,659 pages.
+One full warmup precedes four paired passes, with parsing measured separately
+after file reads. Readability takes 3.540 versus 3.553 ms/page on the same best
+two passes (+0.37%); the all-four-pass difference is +0.78%. Both pass the 5%
+regression gate, and scored text, metadata and errors match on every page.
+These Windows GNU/Rust 1.98.1, ThinLTO/mimalloc results describe the shared-input
+pipeline, not the historical standalone measurements below.
 
 ## Quality and Performance
 

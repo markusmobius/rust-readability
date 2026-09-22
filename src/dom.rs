@@ -12,6 +12,17 @@ static SPACES: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"[\t\n\f\r ]{2,}")
 static ATOMS: LazyLock<Vec<String>> =
     LazyLock::new(|| serde_json::from_str(include_str!("html-atoms.json")).unwrap());
 
+pub(crate) fn original_atom(tag: &str) -> Text {
+    if ATOMS
+        .binary_search_by(|atom| atom.as_str().cmp(tag))
+        .is_ok()
+    {
+        tag.into()
+    } else {
+        Text::new()
+    }
+}
+
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Tree {
     pub document: Document,
