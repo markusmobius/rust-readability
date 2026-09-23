@@ -8,6 +8,11 @@ Rust-Readability contains native translations and adapted data from:
   under the BSD-3-Clause terms in licenses/LICENSE-go.txt.
 - github.com/itlightning/dateparse v0.2.1, under the MIT terms in
   licenses/LICENSE-dateparse.txt.
+- html5ever 0.39.0, commit ce64836c685025a5fef0860fa2e9c80b2683e8d0,
+  for the private HTML tokenizer and supporting macros. Original copyright
+  notices are retained in those files. The MIT and alternative Apache-2.0
+  texts are retained in licenses/LICENSE-html5ever-MIT.txt and
+  licenses/LICENSE-html5ever-APACHE.txt; this package uses the MIT option.
 - Rust-DomDistiller 1.0.0 and its Go-Shiori DOM, chardet and ICU-derived reader
   sources and tables. Their original notices are retained in licenses/ and
   their archive/file digests are recorded in testdata/reader-provenance.json.

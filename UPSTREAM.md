@@ -5,7 +5,7 @@
 The authoritative extraction implementation is the core-only Go-ReadabilityV2 fork, derived from Readeck's v2 branch at v2.1.2, commit `b18540d99ebf105cd67122585a0a41ec299b70bc`. The upstream branch head and tag matched when imported. This is a native port, not a wrapper around a Go command, Mozilla Readability or another Rust extractor.
 
 - Fork module: `github.com/markusmobius/go-readabilityV2`, version 0.6.0, without a `/v2` suffix.
-- Rust package: `rust-readability-v2`, Git release 0.6.2 and crates.io release 0.6.0, with library import `rust_readability`. The registry package name differs from the repository because `rust_readability` is already owned by another maintainer; crates.io treats hyphens and underscores as equivalent for name uniqueness.
+- Rust package: `rust-readability-v2`, Git release 0.6.3 and crates.io release 0.6.0, with library import `rust_readability`. The registry package name differs from the repository because `rust_readability` is already owned by another maintainer; crates.io treats hyphens and underscores as equivalent for name uniqueness.
 - Fork source tree SHA-256: `7b4ab06ed130e3ff5778dfd69dedc87ce12f63e8c8521e0789e855b19070b064`; per-file hashes and normalization rules are in [testdata/go-source.json](testdata/go-source.json). The content digest identifies the exact core source independently of Git history.
 - Original upstream module: `codeberg.org/readeck/go-readability/v2@v2.1.2`.
 - Original upstream module checksum: `h1:JBrdyYJBRPMBbodLM1b5KxCSDH+JqCkGcuVRD7ICBAw=`.
@@ -29,6 +29,30 @@ Read-only DOM parsing consumes its private prepared clone for the first extracti
 
 The HTML adapter uses pinned html5ever 0.39.0 and markup5ever_rcdom 0.39.0. The older parser used by DomDistiller remains unchanged. The adapter preserves Go's formatting-element attribute order, duplicate-attribute handling, namespace adjustments, exact atom dictionary and template-content layout. Comments use Go's entity decoding. Raw leading doctypes are located with html5gum's tokenizer and interpreted in Go's order, including empty identifiers, decoded quotes and quirks decisions. A token/tree sink enforces Go's foreign-content/template termination rule during construction. Its trace hook detects foreign nodes retained by the builder; foreign nodes do not enter HTML's active-formatting list.
 
+The private [tokenizer](src/html/tokenizer/mod.rs) is adapted from html5ever
+0.39.0 at commit `ce64836c685025a5fef0860fa2e9c80b2683e8d0`, specifically
+`html5ever/src/tokenizer/mod.rs`, `html5ever/src/tokenizer/char_ref/mod.rs`
+and `html5ever/src/macros.rs`. It retains the released token types, entity
+tables, states and tree builder. Local changes bulk-copy ordinary lowercase
+ASCII tag and attribute names and use jetscii for delimiter scanning in raw
+text and attribute values. Exceptional characters retain the original state
+transitions and preprocessing. The decoder, normalization, final DOM and
+parser cleanup remain eager; no work is deferred into extraction. No global
+Cargo dependency patch or benchmark-control switch is required. The optional
+`trace_tokenizer` feature retains upstream tracing support.
+
+The new fast paths use safe buffer APIs. Unsafe-code exceptions are restricted
+to the unchanged upstream SSE2/NEON data-state routines and their
+CPU-feature-checked call site; the rest of the tokenizer remains covered by
+the crate's unsafe-code denial. Differential tests compare tokens, errors and
+line numbers against the independent released tokenizer at every UTF-8 split
+point. Upstream notices are retained under the
+[MIT option](licenses/LICENSE-html5ever-MIT.txt), alongside its
+[alternative Apache-2.0 text](licenses/LICENSE-html5ever-APACHE.txt).
+The registry archive does not contain the historical `COPYRIGHT` file named
+in its source headers; the original copyright statements and supplied
+license texts are preserved.
+
 The `parse_html_into` / `HtmlTreeSink` API emits the same
 converted nodes into a caller-owned arena. `parse_dom` uses that same conversion
 with its own sink, so attribute, namespace, doctype and comment handling are not
@@ -47,7 +71,7 @@ in-memory input; they introduce no new decoding rules.
 
 HTML serialization is a local translation of x/net v0.59.0, including comment escaping, doctype identifiers, void-element failures, literal text in HTML integration contexts, and plaintext aborts. Text serialization follows Readeck's renderer, including queued whitespace, block separators, preformatted text, math annotations and hidden content.
 
-Timestamps use a direct translation of `itlightning/dateparse v0.2.1` and Go's layout parser, not Markus DateParser or a heuristic substitute. Chrono supplies calendar arithmetic. TZif decoding uses tz-rs with Go-compatible transition ordering, pre-first-transition choice and abbreviation lookup. Named fallback data and Windows abbreviations come from the pinned Go toolchain. Unix uses the system zone files and Go's fallback order. Windows uses native timezone information, registry/MUI name lookup, Go's abbreviation table and its current-rule projection across a 200-year window. The Windows FFI module is the only locally permitted unsafe code.
+Timestamps use a direct translation of `itlightning/dateparse v0.2.1` and Go's layout parser, not Markus DateParser or a heuristic substitute. Chrono supplies calendar arithmetic. TZif decoding uses tz-rs with Go-compatible transition ordering, pre-first-transition choice and abbreviation lookup. Named fallback data and Windows abbreviations come from the pinned Go toolchain. Unix uses the system zone files and Go's fallback order. Windows uses native timezone information, registry/MUI name lookup, Go's abbreviation table and its current-rule projection across a 200-year window. Unsafe code is limited to the Windows FFI module and the upstream tokenizer SIMD routines described above.
 
 ## Reader Provenance
 

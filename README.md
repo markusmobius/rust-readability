@@ -6,18 +6,18 @@ The behavioral reference is `github.com/markusmobius/go-readabilityV2`, derived 
 
 The inherited algorithm follows Mozilla Readability.js 0.6.0 plus the Go forks' improvements. Going forward, we strive to mirror Mozilla's original JavaScript Readability through the Go reference. Our philosophy is **bring your own HTML**: fetching, request modifiers, CLI/server functionality and diagnostic parser logging are outside the core library.
 
-Version **0.6.2** requires Rust 1.98.1 and a native C toolchain to build. Extraction does not require a Go or Python runtime.
+Version **0.6.3** requires Rust 1.98.1 and a native C toolchain to build. Extraction does not require a Go or Python runtime. See [CHANGELOG.md](CHANGELOG.md) for the parser improvements in this release.
 
 **The library is single-threaded.** Each extraction runs on the calling thread, with no internal worker threads or thread pool. It is suitable for servers running many engines in parallel: give each engine its own parser and input DOM, and let the server control concurrency.
 
 ## Installation
 
 ```sh
-cargo add rust-readability-v2 --git https://github.com/markusmobius/rust-readability --tag v0.6.2
+cargo add rust-readability-v2 --git https://github.com/markusmobius/rust-readability --tag v0.6.3
 ```
 
 The package name is `rust-readability-v2`; the Rust import name is `rust_readability`.
-Version 0.6.2 is a GitHub source release, not a new crates.io publication.
+Version 0.6.3 is a GitHub source release, not a new crates.io publication.
 
 ## Example
 

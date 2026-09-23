@@ -5,6 +5,8 @@ use std::borrow::Cow;
 mod direct;
 mod doctype;
 mod sink;
+#[allow(dead_code, unused_imports, unused_parens)]
+mod tokenizer;
 
 pub use direct::{parse_html_direct, HtmlTreeStore};
 

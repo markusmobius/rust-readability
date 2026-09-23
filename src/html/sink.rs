@@ -1,9 +1,10 @@
 use super::doctype::{self, Declaration};
+use super::tokenizer::Tokenizer;
 use html5ever::{
     buffer_queue::BufferQueue,
     interface::QuirksMode,
     tendril::StrTendril,
-    tokenizer::{Doctype, TagKind, Token, TokenSink, TokenSinkResult, Tokenizer},
+    tokenizer::{Doctype, TagKind, Token, TokenSink, TokenSinkResult},
     tree_builder::{ElementFlags, NodeOrText, Tracer, TreeBuilder, TreeSink},
     Attribute, QualName, TokenizerResult,
 };

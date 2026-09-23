@@ -1,13 +1,13 @@
 [package]
 name = "rust-readability-v2"
-version = "0.6.2"
+version = "0.6.3"
 edition = "2021"
 rust-version = "1.98.1"
 description = "Native Rust port of Readeck's Go Readability v2"
 repository = "https://github.com/markusmobius/rust-readability"
 license = "MIT AND BSD-3-Clause AND ICU"
 include = [
-	"Cargo.toml", "Cargo.lock", "rust-toolchain.toml", "README.md", "UPSTREAM.md",
+	"Cargo.toml", "Cargo.lock", "rust-toolchain.toml", "README.md", "CHANGELOG.md", "UPSTREAM.md",
 	"LICENSE", "NOTICE", "licenses/**", "src/**", "testdata/**",
 	"tools/go_reference.py", "tools/go-reference/**",
 ]
@@ -15,12 +15,17 @@ include = [
 [lib]
 name = "rust_readability"
 
+[features]
+trace_tokenizer = []
+
 [dependencies]
 aho-corasick = "1.1.5"
 chrono = "0.4"
 encoding_rs = "0.8.41"
 html5ever = "=0.39.0"
 html5gum = "=0.8.4"
+jetscii = "=0.5.3"
+log = "0.4"
 markup5ever = "=0.14.1"
 markup5ever_rcdom = "=0.39.0"
 percent-encoding = "2.3.2"

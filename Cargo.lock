@@ -622,7 +622,7 @@ checksum = "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4"
 
 [[package]]
 name = "rust-readability-v2"
-version = "0.6.2"
+version = "0.6.3"
 dependencies = [
  "aho-corasick",
  "base64",
@@ -630,6 +630,8 @@ dependencies = [
  "encoding_rs",
  "html5ever",
  "html5gum",
+ "jetscii",
+ "log",
  "markup5ever 0.14.1",
  "markup5ever_rcdom",
  "percent-encoding",
