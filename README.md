@@ -84,17 +84,6 @@ Implementations must provide consistent, acyclic node indices in `0..node_count`
 Readability's own `Dom` implements this interface using its existing shared
 storage. The public DOM types and existing extraction APIs are unchanged.
 
-### Patch Qualification
-
-The [paired extraction benchmark](https://github.com/markusmobius/content-extractor-benchmark/blob/5edcfd090f1590c9bbf26d7543fbdc2ab615e117/rust_shared_performance_2026_09_21.json)
-compares 0.6.1 with 0.6.2 in coordinated three-engine Rust suites on 2,659 pages.
-One full warmup precedes four paired passes, with parsing measured separately
-after file reads. Readability takes 3.540 versus 3.553 ms/page on the same best
-two passes (+0.37%); the all-four-pass difference is +0.78%. Both pass the 5%
-regression gate, and scored text, metadata and errors match on every page.
-These Windows GNU/Rust 1.98.1, ThinLTO/mimalloc results describe the shared-input
-pipeline, not the historical standalone measurements below.
-
 ## Current Quality and Speed
 
 The [2026-09-23 benchmark JSON](https://github.com/markusmobius/content-extractor-benchmark/blob/d433ab637f0a56c0926aa3698f470794a553472f/go_rust_shared_performance_2026_09_23.json)
@@ -141,69 +130,7 @@ match all scored outputs; Trafilatura retains two metadata-only differences.
 Separate metadata scores, exact source pins and protocol limits are in
 [UPSTREAM.md](UPSTREAM.md#released-suite-benchmark). These are shared-input
 suite timings, not standalone end-to-end latency or an isolated parser-speedup
-measurement. Older measurements below use different protocols.
-
-## Historical Quality and Performance
-
-Measured on 2026-09-16 using all **983 labeled pages** from
-[content-extractor-benchmark](https://github.com/markusmobius/content-extractor-benchmark/tree/466fdbee8a504441eb78ed11d71c1da220681cab),
-the same pinned corpus used for Go-DomDistiller and Rust-DomDistiller.
-The Codeberg row uses the unmodified v2.1.2 source at the commit above and its
-original dependencies. The Go fork and Rust rows use version 0.6.0.
-
-### Extraction Quality
-
-| Extractor | Precision | Recall | F1 | Accuracy |
-| --- | ---: | ---: | ---: | ---: |
-| Codeberg Go-Readability v2.1.2 | 0.8705 | 0.8862 | 0.8783 | 0.8774 |
-| Go-ReadabilityV2 | 0.8705 | 0.8862 | 0.8783 | 0.8774 |
-| Rust-Readability | 0.8705 | 0.8862 | 0.8783 | 0.8774 |
-
-All three engines have **exactly the same quality counts**: TP 2,601, FN 334,
-FP 387 and TN 2,561. The same seven empty extractions are scored as empty text,
-not skipped. Scores use the benchmark's case-sensitive snippet matching and
-globally aggregated counts, not token-level scoring or metadata-quality scores.
-
-The Go fork and Rust match exactly on all 983 pages for text, HTML, title, byline,
-excerpt, site name, image URL, favicon, language and errors. Codeberg's original
-dependencies use x/net 0.41.0 and x/text 0.26.0; the fork uses 0.59.0 and 0.42.0.
-With the original dependencies, 387 pages differ only in the HTML field; all
-other compared fields and quality counts agree. A separate Codeberg control
-using the fork's dependency versions matches all ten fields exactly on 983/983
-pages. Thus equal quality is not a claim of byte-identical HTML across different
-parser versions.
-
-### Extraction Time
-
-Median time per complete 983-page pass; ranges show the measured minimum and
-maximum across all **102 measured passes per engine**.
-Speedup is Go-ReadabilityV2's median time divided by each engine's median time.
-
-| Extractor | Median | Range | Speedup vs Go-ReadabilityV2 |
-| --- | ---: | ---: | ---: |
-| Codeberg Go-Readability v2.1.2 | 2,044 ms | 1,854-2,792 ms | 0.96x |
-| Go-ReadabilityV2 | 1,955 ms | 1,811-2,712 ms | 1.00x |
-| Rust-Readability | 960 ms | 876-1,521 ms | 2.04x |
-
-Rust's median speedup was **2.04x over Go-ReadabilityV2** and **2.13x over
-Codeberg**.
-
-Measured on an AMD Ryzen AI 7 PRO 350 under Linux/WSL2, pinned to one logical CPU,
-with Go 1.27.1 and Rust 1.98.1 release builds. Each engine received two warmup
-passes followed by 102 measured passes, cycling all six engine orders 17 times.
-The dependency-aligned Codeberg control is for correctness only;
-the timed Codeberg row retains its original dependency versions.
-
-Timing includes extraction from pre-parsed DOMs, plain-text rendering and snippet
-scoring. It excludes file I/O, decoding, initial HTML/URL parsing, startup, IPC
-and the extra HTML/metadata collection used for exact-output checks. Timing varies
-between runs: these are single-machine measurements, not a guaranteed speedup or an
-end-to-end reader/network benchmark.
-
-Raw samples, dependency graphs and source/binary fingerprints are retained in
-[testdata/benchmark-results-0.6.0-crate.json](testdata/benchmark-results-0.6.0-crate.json).
-See [UPSTREAM.md](UPSTREAM.md#shared-benchmark) for the runner and reproduction
-instructions. These tables are identical to the Go fork's README tables.
+measurement.
 
 ## Verification
 
