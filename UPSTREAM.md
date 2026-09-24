@@ -1,5 +1,45 @@
 # Upstream Reference
 
+## Released Suite Benchmark
+
+The [2026-09-23 JSON](https://github.com/markusmobius/content-extractor-benchmark/blob/d433ab637f0a56c0926aa3698f470794a553472f/go_rust_shared_performance_2026_09_23.json)
+is authoritative for the current [README tables](README.md#current-quality-and-speed).
+Its SHA-256 is `24db96d7858adea1f345e7e3096e7a62bc24fa2f218a3f19f85d1fecb727e4b9`.
+Read text scores at `quality[worker][engine].evaluations[corpus].overall.f1`,
+selected timings at `overall`, and all-four timings at `all_passes`.
+
+Rust pins are Readability 0.6.3 (`52ec5ae744fb132e011ad9153ad3071e1227bdeb`),
+DomDistiller 1.0.1 (`e95bff0cea7f7b9639abe04a8531b220b3ee4a6e`) and Trafilatura
+2.2.4 (`fd57552f181c59fbb0b232250529ef68e967181b`). Go stays at Readability
+0.6.0, DomDistiller 1.0.0 and Trafilatura 2.2.2; full commits and unchanged
+dependency graphs are in the embedded build receipts. Rust-Trafilatura remains
+private; reproducing that suite requires authorized access.
+
+| Implementation | Author Sets Exact / 1,290 | Author-Unit F1 | Titles Exact / 2,364 | Dates Exact / 1,530 |
+| --- | ---: | ---: | ---: | ---: |
+| go-readabilityV2-0.6.0 | 640 | 56.38767% | 1,247 | 763 |
+| rust-readability-0.6.3 | 640 | 56.38767% | 1,247 | 763 |
+| go-domdistiller-1.0.0 | 0 | 0.00000% | 1,106 | 0 |
+| rust-domdistiller-1.0.1 | 0 | 0.00000% | 1,106 | 0 |
+| go-trafilatura-2.2.2 | 695 | 58.80923% | 1,228 | 1,227 |
+| rust-trafilatura-2.2.4 | 696 | 58.86640% | 1,227 | 1,227 |
+
+Metadata uses only nonempty supplied annotations; unannotated is not negative,
+and missing output is not filled by another engine. All six scored-output
+digests match the preceding September 22 report. Trafilatura's two Go/Rust
+differences concern one title and one author, not extracted text.
+
+The full 2,659-page development run used seed 20260922, one warmup and four
+measured passes. Passes 1 and 3 were selected by combined extraction time for
+every row (5,318 observations each); all-four means retain 10,636 observations.
+Worker order is balanced per page; three-engine order is a partial six-pass
+block. Go uses `GOMAXPROCS=1`, `GOGC=100`, without forced collection. Native
+timers exclude file reads and IPC; parsing and extraction stay separate.
+The 26,590-response audit passed with no recorded sleep and AC power throughout.
+This compares released suites, not isolated parser changes or unseen holdout
+quality. It does not establish extraction-time neutrality versus older Rust.
+Historical standalone results and independent oracle fixtures below are unchanged.
+
 ## Source and Dependency Graph
 
 The authoritative extraction implementation is the core-only Go-ReadabilityV2 fork, derived from Readeck's v2 branch at v2.1.2, commit `b18540d99ebf105cd67122585a0a41ec299b70bc`. The upstream branch head and tag matched when imported. This is a native port, not a wrapper around a Go command, Mozilla Readability or another Rust extractor.
