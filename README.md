@@ -13,11 +13,12 @@ Version **0.6.3** requires Rust 1.98.1 and a native C toolchain to build. Extrac
 ## Installation
 
 ```sh
-cargo add rust-readability-v2 --git https://github.com/markusmobius/rust-readability --tag v0.6.3
+cargo add rust-readability-v2@0.6.3
 ```
 
 The package name is `rust-readability-v2`; the Rust import name is `rust_readability`.
-Version 0.6.3 is a GitHub source release, not a new crates.io publication.
+Version 0.6.3 is available on [crates.io](https://crates.io/crates/rust-readability-v2/0.6.3)
+and as a [GitHub source release](https://github.com/markusmobius/rust-readability/releases/tag/v0.6.3).
 
 ## Example
 

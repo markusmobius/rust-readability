@@ -1,5 +1,11 @@
 # Changelog
 
+## crates.io Publication - 2026-09-23
+
+- Publish `rust-readability-v2` 0.6.3 on crates.io with the same runtime sources
+  as the existing GitHub release. Update registry installation instructions;
+  the original release tag and benchmark results are unchanged.
+
 ## Documentation - 2026-09-23
 
 - Refresh README quality and six-engine speed comparisons from the published
@@ -25,4 +31,4 @@
   The integrated three-engine suite also matched all 2,659 development-page
   DOMs and benchmark outputs. These checks do not claim new platform coverage.
 
-This is a GitHub source release; the crates.io version remains 0.6.0.
+Version 0.6.3 is available as both a GitHub source release and a crates.io package.

@@ -12,8 +12,8 @@ Rust pins are Readability 0.6.3 (`52ec5ae744fb132e011ad9153ad3071e1227bdeb`),
 DomDistiller 1.0.1 (`e95bff0cea7f7b9639abe04a8531b220b3ee4a6e`) and Trafilatura
 2.2.4 (`fd57552f181c59fbb0b232250529ef68e967181b`). Go stays at Readability
 0.6.0, DomDistiller 1.0.0 and Trafilatura 2.2.2; full commits and unchanged
-dependency graphs are in the embedded build receipts. Rust-Trafilatura remains
-private; reproducing that suite requires authorized access.
+dependency graphs are in the embedded build receipts. Rust-Trafilatura is now
+public; the recorded source commits remain available.
 
 | Implementation | Author Sets Exact / 1,290 | Author-Unit F1 | Titles Exact / 2,364 | Dates Exact / 1,530 |
 | --- | ---: | ---: | ---: | ---: |
@@ -45,7 +45,7 @@ Historical standalone results and independent oracle fixtures below are unchange
 The authoritative extraction implementation is the core-only Go-ReadabilityV2 fork, derived from Readeck's v2 branch at v2.1.2, commit `b18540d99ebf105cd67122585a0a41ec299b70bc`. The upstream branch head and tag matched when imported. This is a native port, not a wrapper around a Go command, Mozilla Readability or another Rust extractor.
 
 - Fork module: `github.com/markusmobius/go-readabilityV2`, version 0.6.0, without a `/v2` suffix.
-- Rust package: `rust-readability-v2`, Git release 0.6.3 and crates.io release 0.6.0, with library import `rust_readability`. The registry package name differs from the repository because `rust_readability` is already owned by another maintainer; crates.io treats hyphens and underscores as equivalent for name uniqueness.
+- Rust package: `rust-readability-v2`, Git and crates.io release 0.6.3, with library import `rust_readability`. The registry package name differs from the repository because `rust_readability` is already owned by another maintainer; crates.io treats hyphens and underscores as equivalent for name uniqueness.
 - Fork source tree SHA-256: `7b4ab06ed130e3ff5778dfd69dedc87ce12f63e8c8521e0789e855b19070b064`; per-file hashes and normalization rules are in [testdata/go-source.json](testdata/go-source.json). The content digest identifies the exact core source independently of Git history.
 - Original upstream module: `codeberg.org/readeck/go-readability/v2@v2.1.2`.
 - Original upstream module checksum: `h1:JBrdyYJBRPMBbodLM1b5KxCSDH+JqCkGcuVRD7ICBAw=`.
