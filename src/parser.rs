@@ -4,6 +4,35 @@ use crate::{
 };
 use std::io::Read;
 
+#[cfg(feature = "lab-profile")]
+pub(crate) struct Profile {
+    previous: std::time::Instant,
+    stages: Vec<(&'static str, u128)>,
+}
+
+#[cfg(feature = "lab-profile")]
+impl Profile {
+    pub(crate) fn new() -> Self {
+        Self {
+            previous: std::time::Instant::now(),
+            stages: Vec::new(),
+        }
+    }
+
+    pub(crate) fn mark(&mut self, stage: &'static str) {
+        let now = std::time::Instant::now();
+        self.stages.push((stage, (now - self.previous).as_nanos()));
+        self.previous = now;
+    }
+}
+
+#[cfg(feature = "lab-profile")]
+impl Drop for Profile {
+    fn drop(&mut self) {
+        eprintln!("{}", serde_json::to_string(&self.stages).unwrap());
+    }
+}
+
 #[derive(Clone, Debug, Default)]
 pub struct Parser {
     pub options: Options,
@@ -124,24 +153,19 @@ impl Parser {
         mut clone: impl FnMut() -> Tree,
         page_url: Option<&Url>,
     ) -> Result<Article, Error> {
+        #[cfg(feature = "lab-profile")]
+        let mut profile = Profile::new();
         let mut tree = clone();
+        #[cfg(feature = "lab-profile")]
+        profile.mark("read/clone");
         let metadata = self.prepare_tree(&mut tree, page_url)?;
         tree.namespaces.fill(crate::Text::new());
-        let mut first = Some(tree);
-        self.extract_article(
-            || {
-                first.take().unwrap_or_else(|| {
-                    let mut tree = clone();
-                    prepare::unwrap_noscript_images(&mut tree);
-                    prepare::remove_scripts(&mut tree);
-                    prepare::prepare_document(&mut tree);
-                    tree.namespaces.fill(crate::Text::new());
-                    tree
-                })
-            },
-            metadata,
-            page_url,
-        )
+        #[cfg(feature = "lab-profile")]
+        profile.mark("read/prepare");
+        let article = self.extract_article(|| tree.clone_for_readability(), metadata, page_url);
+        #[cfg(feature = "lab-profile")]
+        profile.mark("read/article");
+        article
     }
 
     fn extract_article(

@@ -300,6 +300,10 @@ impl Node {
         value
     }
 
+    pub(crate) fn cache_score(&self, value: f64) {
+        self.score.set(value.to_bits());
+    }
+
     pub fn attr(&self, name: &str) -> &str {
         self.attrs
             .iter()

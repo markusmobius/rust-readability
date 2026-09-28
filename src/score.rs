@@ -282,6 +282,32 @@ pub(crate) fn get_score(tree: &Tree, node: NodeId) -> f64 {
 }
 
 pub(crate) fn set_score(tree: &mut Tree, node: NodeId, score: f64) {
+    let bits = score.to_bits();
+    let exponent = (bits >> 52) & 0x7ff;
+    if exponent <= 1061 {
+        let significand = (bits & ((1 << 52) - 1)) | (u64::from(exponent != 0) << 52);
+        let scaled = significand * 625;
+        let shift = 1071 - exponent.max(1);
+        let rounded = if shift >= 64 {
+            0
+        } else {
+            let integral = scaled >> shift;
+            let remainder = scaled & ((1 << shift) - 1);
+            let halfway = 1 << (shift - 1);
+            integral + u64::from(remainder > halfway || (remainder == halfway && integral & 1 != 0))
+        };
+        let negative = score.is_sign_negative();
+        let value = smol_str::format_smolstr!(
+            "{}{}.{:04}",
+            if negative { "-" } else { "" },
+            rounded / 10_000,
+            rounded % 10_000,
+        );
+        tree.nodes[node].set_attr("data-readability-score", &value);
+        let value = rounded as f64 / 10_000.0;
+        tree.nodes[node].cache_score(if negative { -value } else { value });
+        return;
+    }
     let value = if score == f64::INFINITY {
         "+Inf".into()
     } else if score == f64::NEG_INFINITY {
@@ -366,6 +392,41 @@ mod tests {
             let expected = expected.parse::<f64>().unwrap();
             let actual = get_score(&tree, node);
             assert!(actual.to_bits() == expected.to_bits() || actual.is_nan() && expected.is_nan());
+        }
+    }
+
+    #[test]
+    fn fixed_precision_score_matches_reference_rounding() {
+        let mut tree = Tree::new(Document::parse("<p></p>"));
+        let node = tree.first(0, "p").unwrap();
+        let mut state = 20260927u64;
+        for index in 0..200_000 {
+            state = state.wrapping_mul(6364136223846793005).wrapping_add(1);
+            let value = if index % 2 == 0 {
+                f64::from_bits(state)
+            } else {
+                let exponent = 970 + ((state >> 52) % 93);
+                f64::from_bits((state & !(0x7ff << 52)) | (exponent << 52))
+            };
+            let expected = if value == f64::INFINITY {
+                "+Inf".to_owned()
+            } else if value == f64::NEG_INFINITY {
+                "-Inf".to_owned()
+            } else {
+                format!("{value:.4}")
+            };
+            set_score(&mut tree, node, value);
+            assert_eq!(
+                tree.nodes[node].attr("data-readability-score"),
+                expected,
+                "{value:?}"
+            );
+            let expected = expected.parse::<f64>().unwrap();
+            let actual = get_score(&tree, node);
+            assert!(
+                actual.to_bits() == expected.to_bits() || actual.is_nan() && expected.is_nan(),
+                "{value:?}"
+            );
         }
     }
 

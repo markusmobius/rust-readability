@@ -24,7 +24,11 @@ pub(crate) fn grab_article(
     let mut conditional = true;
     let mut attempts: Vec<(Tree, NodeId, i64)> = Vec::new();
     loop {
+        #[cfg(feature = "lab-profile")]
+        let mut profile = crate::parser::Profile::new();
         let mut tree = next_tree();
+        #[cfg(feature = "lab-profile")]
+        profile.mark("read-attempt/clone");
         let page = tree.first(0, "body")?;
         let mut elements_to_score = Vec::new();
         let mut pending = tree.children_elements(0).first().copied();
@@ -167,6 +171,8 @@ pub(crate) fn grab_article(
             pending = tree.next_element(node, false);
         }
 
+        #[cfg(feature = "lab-profile")]
+        profile.mark("read-attempt/scan");
         let mut candidates = Vec::new();
         for node in elements_to_score {
             if !tree.nodes[node].parent.is_some_and(|parent| {
@@ -207,6 +213,8 @@ pub(crate) fn grab_article(
         sort_by(&mut candidates, |first, second| {
             get_score(&tree, *first) > get_score(&tree, *second)
         });
+        #[cfg(feature = "lab-profile")]
+        profile.mark("read-attempt/score");
         let maximum = usize::try_from(options.n_top_candidates).expect("negative NTopCandidates");
         candidates.truncate(maximum);
         let top = candidates.first().copied();
@@ -324,6 +332,8 @@ pub(crate) fn grab_article(
                 tree.append(article, sibling);
             }
         }
+        #[cfg(feature = "lab-profile")]
+        profile.mark("read-attempt/select");
         cleanup::article(&mut tree, article, options, use_classes, conditional);
         if created_top {
             if let Some(&first) = tree
@@ -344,6 +354,8 @@ pub(crate) fn grab_article(
             tree.append(article, wrapper);
         }
         let length = counts(&tree, article).0;
+        #[cfg(feature = "lab-profile")]
+        profile.mark("read-attempt/cleanup");
         if length >= options.char_thresholds {
             return Some((tree, article));
         }

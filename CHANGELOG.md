@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.6.4 - 2026-09-28
+
+- Prepare the input once per extraction and clone the prepared state for retry
+  passes, preserving caller input and existing retry behavior.
+- Cache ordinary four-decimal candidate scores using exact integer rounding;
+  large and nonfinite values retain the original formatter/parser path.
+- Preserve canonical score text, ties-to-even, signed zero, mutation invalidation
+  and cloned-state behavior. Regression tests include 200,000 score comparisons.
+- Add opt-in `lab-profile` stage timings; normal builds contain no profiling work.
+- These are the retained Readability improvements from the rustHTML lab. The
+  earlier 1.196x worker result used a different fallback policy and is not a
+  speed claim for this release; fresh released-suite measurements follow in the
+  [shared benchmark](https://github.com/markusmobius/content-extractor-benchmark).
+
 ## crates.io Publication - 2026-09-23
 
 - Publish `rust-readability-v2` 0.6.3 on crates.io with the same runtime sources
