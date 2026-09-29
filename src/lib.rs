@@ -29,7 +29,8 @@ pub use article::{Article, Error};
 pub use check::check_document;
 pub use dom::{Attribute, Children, Document, Kind, Node, NodeData, NodeId, Text, Tree as Dom};
 pub use html::{
-    parse_dom, parse_html, parse_html_direct, parse_html_into, HtmlTreeSink, HtmlTreeStore,
+    parse_dom, parse_html, parse_html_direct, parse_html_direct_with_scripting, parse_html_into,
+    HtmlTreeSink, HtmlTreeStore,
 };
 pub use options::Options;
 pub use parser::{from_document, from_html, from_reader, Parser};

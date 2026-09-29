@@ -6,19 +6,19 @@ The behavioral reference is `github.com/markusmobius/go-readabilityV2`, derived 
 
 The inherited algorithm follows Mozilla Readability.js 0.6.0 plus the Go forks' improvements. Going forward, we strive to mirror Mozilla's original JavaScript Readability through the Go reference. Our philosophy is **bring your own HTML**: fetching, request modifiers, CLI/server functionality and diagnostic parser logging are outside the core library.
 
-Version **0.6.4** requires Rust 1.98.1 and a native C toolchain to build. It reuses prepared input across retries and accelerates exact candidate-score updates without changing extraction behavior. Extraction needs no Go or Python runtime; optional `lab-profile` stage timings are compiled out normally. See [CHANGELOG.md](CHANGELOG.md).
+Version **0.6.5** requires Rust 1.98.1 and a native C toolchain to build. It adds an explicit scripting-mode option for direct parser integrations; existing parser defaults and standalone extraction are unchanged. Extraction needs no Go or Python runtime; optional `lab-profile` stage timings are compiled out normally. See [CHANGELOG.md](CHANGELOG.md).
 
 **The library is single-threaded.** Each extraction runs on the calling thread, with no internal worker threads or thread pool. It is suitable for servers running many engines in parallel: give each engine its own parser and input DOM, and let the server control concurrency.
 
 ## Installation
 
 ```sh
-cargo add rust-readability-v2@0.6.4
+cargo add rust-readability-v2@0.6.5
 ```
 
 The package name is `rust-readability-v2`; the Rust import name is `rust_readability`.
-Version 0.6.4 is available on [crates.io](https://crates.io/crates/rust-readability-v2/0.6.4)
-and as a [GitHub source release](https://github.com/markusmobius/rust-readability/releases/tag/v0.6.4).
+Version 0.6.5 is available on [crates.io](https://crates.io/crates/rust-readability-v2/0.6.5)
+and as a [GitHub source release](https://github.com/markusmobius/rust-readability/releases/tag/v0.6.5).
 
 ## Example
 
@@ -76,6 +76,13 @@ in Git releases from 0.6.1 onward.
 
 ### Shared Input
 
+`parse_html_direct` writes directly into an `HtmlTreeStore`.
+`parse_html_direct_with_scripting(source, &mut store, false)` opts into
+scripting-disabled tree construction, making `noscript` contents child nodes.
+All existing parser APIs keep scripting enabled. This controls HTML parsing,
+not JavaScript execution. Standalone Readability should retain its default
+parser so its existing noscript image recovery sees the expected raw markup.
+
 `DomSource` is a borrowed view for integration with another document arena.
 `Parser::parse_shared_document` imports it once per extraction and uses the
 existing copy-on-write clones for every retry. It preserves the caller's input;
@@ -86,6 +93,9 @@ Readability's own `Dom` implements this interface using its existing shared
 storage. The public DOM types and existing extraction APIs are unchanged.
 
 ## Current Quality and Speed
+
+The table below measures 0.6.4, before the additive 0.6.5 parser API; it is not
+a new 0.6.5 speed measurement.
 
 The [2026-09-28 benchmark](https://github.com/markusmobius/content-extractor-benchmark/blob/97c0f3f67261c275ceb2ab532ee05992dbce8cc7/README.md#results-2026-09-28) uses 2,659 saved
 development pages: 983 LegoNews, 181 ScrapingHub and 1,495 WCXB. Their F1

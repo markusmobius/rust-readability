@@ -313,6 +313,14 @@ pub fn parse_html_direct<Output: HtmlTreeStore>(
     source: &str,
     output: &mut Output,
 ) -> Output::Handle {
+    parse_html_direct_with_scripting(source, output, true)
+}
+
+pub fn parse_html_direct_with_scripting<Output: HtmlTreeStore>(
+    source: &str,
+    output: &mut Output,
+    scripting_enabled: bool,
+) -> Output::Handle {
     let declaration = doctype::declaration(source);
     let root = output.append_node(None, Kind::Document, "", "", "");
     let direct = DirectSink {
@@ -322,6 +330,6 @@ pub fn parse_html_direct<Output: HtmlTreeStore>(
         templates: RefCell::new(Vec::new()),
         formatting: RefCell::new(Vec::new()),
     };
-    sink::parse_dom_into(source, direct, declaration);
+    sink::parse_dom_into_with_scripting(source, direct, declaration, scripting_enabled);
     root
 }

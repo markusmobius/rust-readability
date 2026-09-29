@@ -188,6 +188,18 @@ pub(super) fn parse_dom_into<Dom: TreeSink>(
 where
     Dom::Handle: ForeignNode,
 {
+    parse_dom_into_with_scripting(source, dom, declaration, true)
+}
+
+pub(super) fn parse_dom_into_with_scripting<Dom: TreeSink>(
+    source: &str,
+    dom: Dom,
+    declaration: Option<Declaration>,
+    scripting_enabled: bool,
+) -> (Dom::Output, Option<Declaration>)
+where
+    Dom::Handle: ForeignNode,
+{
     let sink = Sink {
         dom,
         declaration,
@@ -195,7 +207,13 @@ where
         halted: Cell::new(false),
     };
     let tokenizer = Tokenizer::new(
-        Builder(TreeBuilder::new(sink, Default::default())),
+        Builder(TreeBuilder::new(
+            sink,
+            html5ever::tree_builder::TreeBuilderOpts {
+                scripting_enabled,
+                ..Default::default()
+            },
+        )),
         Default::default(),
     );
     let input = BufferQueue::default();
@@ -203,4 +221,39 @@ where
     while !matches!(tokenizer.feed(&input), TokenizerResult::Done) {}
     tokenizer.end();
     tokenizer.sink.0.sink.finish()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn scripting_option_preserves_default_noscript_behavior() {
+        let source = "<html><head><noscript><meta name='author' content='Writer'></noscript></head><body><noscript><img src='/photo.jpg'><p>Article text.</p></noscript></body></html>";
+        let signature = |document: RcDom| {
+            let mut pending = vec![document.document.clone()];
+            let mut elements = Vec::new();
+            let mut text = String::new();
+            while let Some(node) = pending.pop() {
+                match &node.data {
+                    NodeData::Element { name, .. } => elements.push(name.local.to_string()),
+                    NodeData::Text { contents } => text.push_str(&contents.borrow()),
+                    _ => {}
+                }
+                pending.extend(node.children.borrow().iter().cloned());
+            }
+            (elements, text)
+        };
+        let original = signature(parse(source).0);
+        let enabled =
+            signature(parse_dom_into_with_scripting(source, RcDom::default(), None, true).0);
+        let disabled =
+            signature(parse_dom_into_with_scripting(source, RcDom::default(), None, false).0);
+        assert_eq!(original, enabled);
+        assert!(enabled.1.contains("<img"));
+        assert!(!enabled.0.iter().any(|tag| tag == "img" || tag == "meta"));
+        assert!(disabled.0.iter().any(|tag| tag == "img"));
+        assert!(disabled.0.iter().any(|tag| tag == "meta"));
+        assert!(!disabled.1.contains("<img"));
+    }
 }

@@ -8,7 +8,7 @@ mod sink;
 #[allow(dead_code, unused_imports, unused_parens)]
 mod tokenizer;
 
-pub use direct::{parse_html_direct, HtmlTreeStore};
+pub use direct::{parse_html_direct, parse_html_direct_with_scripting, HtmlTreeStore};
 
 pub trait HtmlTreeSink {
     type Handle: Copy;

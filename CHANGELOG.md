@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.6.5 - 2026-09-29
+
+- Add `parse_html_direct_with_scripting` for callers that need scripting-disabled
+  HTML tree construction, including parsed `noscript` children.
+- Keep every existing parsing API scripting-enabled and preserve standalone
+  Mozilla/Go-ReadabilityV2 extraction, metadata, and noscript image recovery.
+- This is an additive parser API release, not a new extraction algorithm or a
+  standalone readability-lxml implementation.
+
 ## 0.6.4 - 2026-09-28
 
 - Prepare the input once per extraction and clone the prepared state for retry

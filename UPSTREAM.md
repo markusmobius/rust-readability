@@ -45,7 +45,7 @@ Historical standalone results and independent oracle fixtures below are unchange
 The authoritative extraction implementation is the core-only Go-ReadabilityV2 fork, derived from Readeck's v2 branch at v2.1.2, commit `b18540d99ebf105cd67122585a0a41ec299b70bc`. The upstream branch head and tag matched when imported. This is a native port, not a wrapper around a Go command, Mozilla Readability or another Rust extractor.
 
 - Fork module: `github.com/markusmobius/go-readabilityV2`, version 0.6.0, without a `/v2` suffix.
-- Rust package: `rust-readability-v2`, Git and crates.io release 0.6.3, with library import `rust_readability`. The registry package name differs from the repository because `rust_readability` is already owned by another maintainer; crates.io treats hyphens and underscores as equivalent for name uniqueness.
+- Rust package: `rust-readability-v2`, Git and crates.io release 0.6.5, with library import `rust_readability`. The registry package name differs from the repository because `rust_readability` is already owned by another maintainer; crates.io treats hyphens and underscores as equivalent for name uniqueness.
 - Fork source tree SHA-256: `7b4ab06ed130e3ff5778dfd69dedc87ce12f63e8c8521e0789e855b19070b064`; per-file hashes and normalization rules are in [testdata/go-source.json](testdata/go-source.json). The content digest identifies the exact core source independently of Git history.
 - Original upstream module: `codeberg.org/readeck/go-readability/v2@v2.1.2`.
 - Original upstream module checksum: `h1:JBrdyYJBRPMBbodLM1b5KxCSDH+JqCkGcuVRD7ICBAw=`.
@@ -108,6 +108,12 @@ per call, before entering the existing copy-on-write retry path. Forced-retry
 coverage checks one import, complete output equality and input preservation.
 `decode_bytes` and `parse_bytes` expose the existing reader normalization for
 in-memory input; they introduce no new decoding rules.
+
+`parse_html_direct_with_scripting` exposes html5ever's scripting flag to direct
+tree-store integrations. Existing entry points pass `true`, matching the Go
+reference and preserving Mozilla noscript image recovery. Trafilatura may
+explicitly pass `false` for its own input. This is not a JavaScript runtime,
+an extraction fallback, or a change to the standalone Readability algorithm.
 
 HTML serialization is a local translation of x/net v0.59.0, including comment escaping, doctype identifiers, void-element failures, literal text in HTML integration contexts, and plaintext aborts. Text serialization follows Readeck's renderer, including queued whitespace, block separators, preformatted text, math annotations and hidden content.
 
