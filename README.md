@@ -94,33 +94,41 @@ storage. The public DOM types and existing extraction APIs are unchanged.
 
 ## Current Quality and Speed
 
-The table below measures 0.6.4, before the additive 0.6.5 parser API; it is not
-a new 0.6.5 speed measurement.
-
-The [2026-09-28 benchmark](https://github.com/markusmobius/content-extractor-benchmark/blob/97c0f3f67261c275ceb2ab532ee05992dbce8cc7/README.md#results-2026-09-28) uses 2,659 saved
+The [2026-09-29 benchmark](https://github.com/markusmobius/content-extractor-benchmark/blob/49c426d6135df81b7d492bea7e6aec8e6d77d80c/README.md#results-2026-09-29) uses 2,659 saved
 development pages: 983 LegoNews, 181 ScrapingHub and 1,495 WCXB. Their F1
 scores use different rules and must not be averaged. Errors are listed in
 that order and remain in the denominators.
 
 | Implementation | LegoNews F1 | ScrapingHub F1 | WCXB F1 | Errors | Extraction ms/page |
 | --- | ---: | ---: | ---: | --- | ---: |
-| go-readabilityV2-0.6.0 | 87.82711% | 95.20557% | 78.47603% | 7 / 0 / 28 | 3.545 |
-| rust-readability-0.6.4 | 87.82711% | 95.20557% | 78.47603% | 7 / 0 / 28 | 3.239 |
+| go-readabilityV2-0.6.0 | 87.82711% | 95.20557% | 78.47603% | 7 / 0 / 28 | 4.755 |
+| rust-readability-0.6.5 | 87.82711% | 95.20557% | 78.47603% | 7 / 0 / 28 | 3.945 |
 
 Timings are means of **all four measured passes** after one warmup, not best-of
 selection. Windows 11 / Ryzen AI 7 PRO 350; Go 1.27.1 and Rust 1.98.1 GNU with
 ThinLTO/mimalloc. Native extraction includes working copies, metadata and
 text rendering; file I/O, startup, IPC and scoring are excluded.
-Shared parsing is charged once per language/page: Go 7.308 and Rust 3.369 ms
-in this shared-input suite. Trafilatura fallback, comments and pagination are
-off; tables are on. Scored Go/Rust outputs match for this engine on all pages.
-These are not standalone request latencies or isolated old/new-version speedups.
+Parsing is one charge per worker/page: Go 11.283 and Rust 6.386 ms, including
+the separate Trafilatura noscript tree when required. Standalone Mozilla keeps
+its default parser and algorithm; Trafilatura fallback, comments and pagination
+are off. Scored Go/Rust Readability outputs match on all 2,659 inputs and are
+unchanged from the previous release. The within-run extraction ratio is 1.21x;
+this is not an isolated 0.6.4-to-0.6.5 speedup or a request-latency measurement.
+All 26,590 responses were audited, with AC power and no sleep events.
 
-[Disabled-mode JSON](https://github.com/markusmobius/content-extractor-benchmark/blob/97c0f3f67261c275ceb2ab532ee05992dbce8cc7/go_rust_shared_performance_2026_09_28.json),
-[native-Lxml JSON](https://github.com/markusmobius/content-extractor-benchmark/blob/97c0f3f67261c275ceb2ab532ee05992dbce8cc7/go_rust_lxml_performance_2026_09_28.json), and
-[release validation](https://github.com/markusmobius/content-extractor-benchmark/blob/97c0f3f67261c275ceb2ab532ee05992dbce8cc7/release_validation_2026_09_28.json)
+On the separate unannotated application corpus, all 6,554 standalone Mozilla
+outputs remain unchanged in each language, including noscript image recovery.
+Readability is not Trafilatura's fallback. Trafilatura workers always use FAST
+(0% external fallback); non-FAST library probes use only bundled readability-lxml
+(202/6,554 final outputs, 3.082%). Neither rate describes standalone Readability.
+
+[FAST-suite JSON](https://github.com/markusmobius/content-extractor-benchmark/blob/49c426d6135df81b7d492bea7e6aec8e6d77d80c/go_rust_shared_performance_2026_09_29.json),
+[non-FAST-suite JSON](https://github.com/markusmobius/content-extractor-benchmark/blob/49c426d6135df81b7d492bea7e6aec8e6d77d80c/go_rust_lxml_performance_2026_09_29.json), and
+[release validation](https://github.com/markusmobius/content-extractor-benchmark/blob/49c426d6135df81b7d492bea7e6aec8e6d77d80c/release_validation_2026_09_29.json)
 retain separate metadata scores, output differences, exact source/build pins,
 all pass totals and verification limits. Historical results use other protocols.
+The immutable 0.6.5 crate retains its release-time README; these fresh tables are
+repository and GitHub release-note follow-ups, not a republished archive.
 
 ## Verification
 

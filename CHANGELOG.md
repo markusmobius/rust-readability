@@ -8,6 +8,15 @@
   Mozilla/Go-ReadabilityV2 extraction, metadata, and noscript image recovery.
 - This is an additive parser API release, not a new extraction algorithm or a
   standalone readability-lxml implementation.
+- Pass all 60 release tests, including 133 saved extraction pages and 1,793 HTML
+  cases, plus strict Clippy and package checks. Verify unchanged standalone
+  Mozilla outputs on all 6,554 application inputs in each language.
+- Record [fresh released-suite measurements](https://github.com/markusmobius/content-extractor-benchmark/blob/49c426d6135df81b7d492bea7e6aec8e6d77d80c/README.md#results-2026-09-29):
+  F1 remains 87.82711% / 95.20557% / 78.47603% on LegoNews / ScrapingHub / WCXB.
+  Go/Rust extraction is 4.755 / 3.945 ms/page across all four measured passes.
+  This is a within-run language comparison, not an isolated version speedup.
+  Trafilatura's 0% FAST / 3.082% non-FAST external fallback is independent of
+  standalone Readability. Fresh docs follow publication; crate/tag are unchanged.
 
 ## 0.6.4 - 2026-09-28
 

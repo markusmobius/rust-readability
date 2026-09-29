@@ -2,8 +2,37 @@
 
 ## Released Suite Benchmark
 
-The [2026-09-23 JSON](https://github.com/markusmobius/content-extractor-benchmark/blob/d433ab637f0a56c0926aa3698f470794a553472f/go_rust_shared_performance_2026_09_23.json)
+The [2026-09-29 FAST-suite report](https://github.com/markusmobius/content-extractor-benchmark/blob/49c426d6135df81b7d492bea7e6aec8e6d77d80c/go_rust_shared_performance_2026_09_29.json)
 is authoritative for the current [README tables](README.md#current-quality-and-speed).
+Its published LF-byte SHA-256 is
+`382f869ae8f91c493c2c623c90a42a574f711ea584aead27387e907f3a24c523`.
+The suite uses released Rust-Readability 0.6.5 / Go-ReadabilityV2 0.6.0, alongside
+Trafilatura 2.2.6 and independent DomDistiller 1.0.0 / 1.0.1. All source/build
+pins remain in the report. The additive scripting option does not change the
+standalone Mozilla algorithm, its defaults or its noscript image recovery.
+
+All 2,659 development inputs ran one warmup and four measured passes (seed
+20260929), retaining all observations and auditing 26,590 responses, with AC
+power and no sleep events. Go/Rust Readability extraction averages 4.755 / 3.945
+ms/page; quality and scored outputs match. Parsing costs 11.283 / 6.386 ms/page
+for the whole suite, including an isolated Trafilatura noscript tree when needed.
+This is not an isolated 0.6.4-to-0.6.5 speedup or proof over all possible inputs.
+
+[Release validation](https://github.com/markusmobius/content-extractor-benchmark/blob/49c426d6135df81b7d492bea7e6aec8e6d77d80c/release_validation_2026_09_29.json)
+(SHA-256 `f428f7372f7e22c124d7eb708a195ec0100a11be0a542334b7dd9b73598bf81a`)
+also verifies unchanged standalone Mozilla outputs on all 6,554 unannotated
+application inputs in each language. Trafilatura's 0% FAST / 3.082% non-FAST
+external fallback rates concern its bundled readability-lxml, not this library.
+The published 0.6.5 crate SHA-256 is
+`a01e9c0a180976b337fd432fa8f52a461325ec92d8ca38ef588678724bf4fa7a`;
+all 36 Rust source files match clean release commit
+`fb314e7b3f9a363c9852c3dda200f391ef2f98f0`. Its README remains the immutable
+release-time copy. These documentation/release-note updates do not replace it.
+
+## Historical Suite Benchmark: 2026-09-23
+
+The [2026-09-23 JSON](https://github.com/markusmobius/content-extractor-benchmark/blob/d433ab637f0a56c0926aa3698f470794a553472f/go_rust_shared_performance_2026_09_23.json)
+records an older suite; it is not the source of the current README measurements.
 Its published-file SHA-256 (LF line endings) is `7d7be9839f1652606cb91850af5134b188f2508be25623df889372dab4a06cc6`.
 Read text scores at `quality[worker][engine].evaluations[corpus].overall.f1`,
 selected timings at `overall`, and all-four timings at `all_passes`.
