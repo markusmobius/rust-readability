@@ -10,16 +10,16 @@ from `readeck/go-readability`, `go-shiori/go-readability` and `mozilla/readabili
 Our extractor packages share three principles:
 
 1. **Bring your own HTML.** Keep page acquisition separate from extraction.
-	The primary workflow uses HTML supplied by the caller, who controls fetching,
-	caching, rendering, retries and scheduling.
+   The primary workflow uses HTML supplied by the caller, who controls fetching,
+   caching, rendering, retries and scheduling.
 2. **Stay close to upstream.** Preserve the algorithms and behavior of each
-	package's declared upstream reference as closely as possible. Document
-	deliberate differences and compatibility limits in [UPSTREAM.md](UPSTREAM.md)
-	rather than claiming exact equivalence on every page.
+   package's declared upstream reference as closely as possible. Document
+   deliberate differences and compatibility limits in [UPSTREAM.md](UPSTREAM.md)
+   rather than claiming exact equivalence on every page.
 3. **Provide very fast Go and Rust packages.** Run extraction natively, without
-	a Python or Java runtime. Improve throughput and allocation efficiency while
-	preserving intended behavior, and substantiate performance with reproducible
-	benchmarks that report quality alongside speed.
+   a Python or Java runtime. Improve throughput and allocation efficiency while
+   preserving intended behavior, and substantiate performance with reproducible
+   benchmarks that report quality alongside speed.
 
 ## Overview
 
@@ -160,16 +160,16 @@ contains metadata scores, differences, every pass and source/build identities.
 ## Compatibility and Limitations
 
 - **Declared reference.** General `go-readabilityV2` behavior is the target;
-    deterministic differences are compatibility bugs. Finite tests are evidence,
-    not a proof of identical results on every possible input.
+  deterministic differences are compatibility bugs. Finite tests are evidence,
+  not a proof of identical results on every possible input.
 - **No browser rendering.** No page fetching, JavaScript execution or computed
-    layout is provided. HTML absent from the input cannot be recovered.
+  layout is provided. HTML absent from the input cannot be recovered.
 - **Empty articles.** Extraction can succeed without a selected node. Text and
-    HTML methods then return `Error::MissingNode`; rendering errors propagate.
+  HTML methods then return `Error::MissingNode`; rendering errors propagate.
 - **Caller-owned concurrency.** Give concurrent extractions separate parsers
-    and working trees. Parser reuse retains the reference's language-state behavior.
+  and working trees. Parser reuse retains the reference's language-state behavior.
 - **Date context.** Zone-less dates default to UTC. System local-zone behavior
-    follows the Go reference; explicit local-timezone methods allow caller control.
+  follows the Go reference; explicit local-timezone methods allow caller control.
 - **Not a sanitizer.** Sanitize extracted HTML before displaying untrusted input.
 
 See [UPSTREAM.md](UPSTREAM.md) for source pins, parser adaptations, known
