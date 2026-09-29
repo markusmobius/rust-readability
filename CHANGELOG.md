@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.6.7 - 2026-09-29
+
+- Documentation-only release of `rust-readability-v2`; runtime source and
+  dependency pins are unchanged from 0.6.6.
+- Apply the approved nine-section README format, covering supplied HTML,
+  upstream fidelity, native performance, runnable usage and actual options.
+- Require named creator acknowledgments in AGENTS.md and explicitly credit
+  Arc90 Inc, Mozilla, Radhi Fadlillah, Felipe Martin, the Readeck contributors
+  and Markus Mobius in the README.
+- Use full package names while preserving the distinct crate, repository and
+  Rust import names. Benchmark versions and reports remain unchanged; no new run.
+
 ## 0.6.6 - 2026-09-29
 
 - Documentation-only release; runtime source and dependency pins are unchanged

@@ -1,9 +1,9 @@
 [package]
 name = "rust-readability-v2"
-version = "0.6.6"
+version = "0.6.7"
 edition = "2021"
 rust-version = "1.98.1"
-description = "Native Rust port of Readeck's Go Readability v2"
+description = "Native Rust port of go-readabilityV2 for article extraction"
 repository = "https://github.com/markusmobius/rust-readability"
 license = "MIT AND BSD-3-Clause AND ICU"
 include = [

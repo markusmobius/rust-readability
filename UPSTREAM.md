@@ -1,5 +1,14 @@
 # Upstream Reference
 
+## Documentation Release 0.6.7
+
+`rust-readability-v2` 0.6.7 packages the approved nine-section README and the full
+format, philosophy and creator-credit requirements in [AGENTS.md](AGENTS.md).
+Credits retain Arc90 Inc, Mozilla and the complete Go-port/fork lineage. Runtime
+source and dependencies are unchanged from 0.6.6; only documentation, the root
+package version and its descriptive metadata change. Measured 0.6.5 results
+and their immutable reports are not relabeled or rerun.
+
 ## Documentation Release 0.6.6
 
 This patch packages the aligned README, technical/changelog updates and
