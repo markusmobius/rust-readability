@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.6.6 - 2026-09-29
+
+- Documentation-only release; runtime source and dependency pins are unchanged
+  from 0.6.5.
+- Use the same September 29 six-engine speed and quality comparison in all six
+  library READMEs, with consistent units, measured versions and timing boundaries.
+- Include AGENTS.md with instructions for keeping README, UPSTREAM, CHANGELOG,
+  release notes and crate documentation consistent.
+- Package the revised documentation on crates.io. Benchmark rows retain the
+  versions actually measured; this release introduces no new measurements.
+
 ## 0.6.5 - 2026-09-29
 
 - Add `parse_html_direct_with_scripting` for callers that need scripting-disabled

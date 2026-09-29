@@ -1,6 +1,6 @@
 [package]
 name = "rust-readability-v2"
-version = "0.6.5"
+version = "0.6.6"
 edition = "2021"
 rust-version = "1.98.1"
 description = "Native Rust port of Readeck's Go Readability v2"
@@ -8,6 +8,7 @@ repository = "https://github.com/markusmobius/rust-readability"
 license = "MIT AND BSD-3-Clause AND ICU"
 include = [
 	"Cargo.toml", "Cargo.lock", "rust-toolchain.toml", "README.md", "CHANGELOG.md", "UPSTREAM.md",
+	"AGENTS.md",
 	"LICENSE", "NOTICE", "licenses/**", "src/**", "testdata/**",
 	"tools/go_reference.py", "tools/go-reference/**",
 ]

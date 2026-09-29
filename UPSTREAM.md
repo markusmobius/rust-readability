@@ -1,5 +1,13 @@
 # Upstream Reference
 
+## Documentation Release 0.6.6
+
+This patch packages the aligned README, technical/changelog updates and
+[AGENTS.md](AGENTS.md). Runtime source and dependency pins remain those of
+0.6.5. The benchmark retains its measured 0.6.5 label; this is not a new
+extraction benchmark or a claim of changed speed/quality. The earlier crate's
+immutable README is not replaced; 0.6.6 carries the current docs.
+
 ## Released Suite Benchmark
 
 The [2026-09-29 FAST-suite report](https://github.com/markusmobius/content-extractor-benchmark/blob/49c426d6135df81b7d492bea7e6aec8e6d77d80c/go_rust_shared_performance_2026_09_29.json)
