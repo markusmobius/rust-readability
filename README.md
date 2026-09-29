@@ -94,7 +94,7 @@ storage. The public DOM types and existing extraction APIs are unchanged.
 
 ## Current Quality and Speed
 
-The [2026-09-29 benchmark](https://github.com/markusmobius/content-extractor-benchmark/blob/49c426d6135df81b7d492bea7e6aec8e6d77d80c/README.md#results-2026-09-29) uses 2,659 saved
+The [2026-09-29 benchmark](https://github.com/markusmobius/content-extractor-benchmark/blob/d5e8c6402430b4e8a36ff364df991ba74e3ace67/README.md#results-2026-09-29) uses 2,659 saved
 development pages: 983 LegoNews, 181 ScrapingHub and 1,495 WCXB. Their F1
 scores use different rules and must not be averaged. Errors are listed in
 that order and remain in the denominators.
@@ -121,6 +121,14 @@ outputs remain unchanged in each language, including noscript image recovery.
 Readability is not Trafilatura's fallback. Trafilatura workers always use FAST
 (0% external fallback); non-FAST library probes use only bundled readability-lxml
 (202/6,554 final outputs, 3.082%). Neither rate describes standalone Readability.
+
+Both application workers also retain independent standalone DomDistiller,
+including pagination. Its initial removal was an integration error, corrected
+without altering either library. The
+[correction record](https://github.com/markusmobius/content-extractor-benchmark/blob/d5e8c6402430b4e8a36ff364df991ba74e3ace67/worker_correction_2026_09_29.json)
+verifies the frozen pre-removal DomDistiller result on all 6,554 pages, with
+6,169 nonempty outputs per language, complete Go/Rust equality and unchanged
+other sections. The standalone results never supply Trafilatura candidates.
 
 [FAST-suite JSON](https://github.com/markusmobius/content-extractor-benchmark/blob/49c426d6135df81b7d492bea7e6aec8e6d77d80c/go_rust_shared_performance_2026_09_29.json),
 [non-FAST-suite JSON](https://github.com/markusmobius/content-extractor-benchmark/blob/49c426d6135df81b7d492bea7e6aec8e6d77d80c/go_rust_lxml_performance_2026_09_29.json), and
