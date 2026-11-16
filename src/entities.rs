@@ -1,4 +1,4 @@
-use markup5ever::data::{C1_REPLACEMENTS, NAMED_ENTITIES};
+use html5ever::data::{C1_REPLACEMENTS, NAMED_ENTITIES};
 
 pub(crate) fn unescape(text: &str) -> String {
     let mut output = String::with_capacity(text.len());

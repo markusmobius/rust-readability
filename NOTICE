@@ -4,8 +4,9 @@ Rust-Readability contains native translations and adapted data from:
   upstream commit b18540d99ebf105cd67122585a0a41ec299b70bc, under the MIT
   terms retained in LICENSE. The fork's source receipt is in testdata/go-source.json.
 - Go and golang.org/x/net, including HTML entities, rendering, doctypes, atom
-  names, URL behavior, sorting, time layouts and Windows timezone abbreviations,
-  under the BSD-3-Clause terms in licenses/LICENSE-go.txt.
+  names, URL behavior, sorting, time layouts, the zoneinfo.zip reader and
+  Windows timezone abbreviations, under the BSD-3-Clause terms in
+  licenses/LICENSE-go.txt.
 - github.com/itlightning/dateparse v0.2.1, under the MIT terms in
   licenses/LICENSE-dateparse.txt.
 - html5ever 0.39.0, commit ce64836c685025a5fef0860fa2e9c80b2683e8d0,

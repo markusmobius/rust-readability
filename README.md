@@ -23,20 +23,22 @@ Our extractor packages share three principles:
 
 ## Overview
 
-The current `rust-readability-v2` release is **0.6.7**. It accepts HTML readers,
+The current `rust-readability-v2` release is **0.6.8**. It accepts HTML readers,
 decoded strings or parsed trees and returns an owned article DOM with HTML/text
 renderers and metadata getters for title, byline, excerpt, site, image, language
 and dates. It has no page fetcher, CLI or HTTP server; a URL supplies context only.
 
 The behavioral reference is `go-readabilityV2` 0.6.0, whose ancestry follows
 `readeck/go-readability` v2.1.2 and `mozilla/readability` 0.6.0. Extraction runs
-on the calling thread without an internal worker pool. This documentation-only
-release preserves the preceding release's runtime source and dependency pins.
+on the calling thread without an internal worker pool. Release 0.6.8 changes
+dependencies only: it drops the `zip` and `markup5ever` 0.14 crates and uses
+compatible (`^`) instead of exact dependency requirements, with unchanged
+extraction output.
 
 ## Installation
 
 ```sh
-cargo add rust-readability-v2@=0.6.7
+cargo add rust-readability-v2@=0.6.8
 ```
 
 Use Rust 1.98.1 or newer and a native build toolchain. The crate is
@@ -84,7 +86,7 @@ and inspect the evidence behind each result.</p>
 Use `Article::text`, `html`, `render_text` or `render_html` for output. An article
 owns its `document` and optional selected `node`; metadata getters expose title,
 byline, language and dates. Complete APIs are in the
-[rust-readability-v2 reference](https://docs.rs/rust-readability-v2/0.6.7/rust_readability/).
+[rust-readability-v2 reference](https://docs.rs/rust-readability-v2/0.6.8/rust_readability/).
 
 ## Options
 

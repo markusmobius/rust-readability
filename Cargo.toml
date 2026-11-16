@@ -1,6 +1,6 @@
 [package]
 name = "rust-readability-v2"
-version = "0.6.7"
+version = "0.6.8"
 edition = "2021"
 rust-version = "1.98.1"
 description = "Native Rust port of go-readabilityV2 for article extraction"
@@ -24,12 +24,11 @@ lab-profile = []
 aho-corasick = "1.1.5"
 chrono = "0.4"
 encoding_rs = "0.8.41"
-html5ever = "=0.39.0"
-html5gum = "=0.8.4"
-jetscii = "=0.5.3"
+html5ever = "0.39.0"
+html5gum = "0.8.4"
+jetscii = "0.5.3"
 log = "0.4"
-markup5ever = "=0.14.1"
-markup5ever_rcdom = "=0.39.0"
+markup5ever_rcdom = "0.39.0"
 percent-encoding = "2.3.2"
 regex = "1.13.1"
 serde = { version = "1", features = ["derive"] }
@@ -38,11 +37,10 @@ serde_stacker = "0.1"
 smol_str = "0.3"
 unicode-normalization = "0.1.25"
 tz-rs = "0.7.3"
-zip = { version = "4", default-features = false }
 
 [target.'cfg(windows)'.dependencies]
 windows-sys = { version = "0.61.2", features = ["Win32_Foundation", "Win32_System_Time", "Win32_System_Registry"] }
-winreg = "0.55"
+winreg = "0.56"
 
 [dev-dependencies]
 base64 = "0.22"

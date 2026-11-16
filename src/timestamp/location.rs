@@ -41,21 +41,10 @@ impl LocalTimeZone {
     }
 
     pub fn from_name(name: &str) -> Result<Self, TimestampError> {
-        use std::io::Read;
         if name.is_empty() || name == "UTC" {
             return Ok(Self::utc());
         }
-        let mut archive =
-            zip::ZipArchive::new(std::io::Cursor::new(include_bytes!("zoneinfo.zip")))
-                .map_err(|error| TimestampError(error.to_string()))?;
-        let mut entry = archive
-            .by_name(name)
-            .map_err(|error| TimestampError(error.to_string()))?;
-        let mut data = Vec::new();
-        entry
-            .read_to_end(&mut data)
-            .map_err(|error| TimestampError(error.to_string()))?;
-        Self::from_tzif(&data)
+        Self::from_tzif(tzinfo_from_zip(include_bytes!("zoneinfo.zip"), name)?)
     }
 
     pub fn from_tzif(data: &[u8]) -> Result<Self, TimestampError> {
@@ -142,6 +131,80 @@ impl LocalTimeZone {
     }
 }
 
+fn get2(data: &[u8], offset: usize) -> usize {
+    data.get(offset..offset + 2)
+        .map_or(0, |bytes| u16::from_le_bytes([bytes[0], bytes[1]]) as usize)
+}
+
+fn get4(data: &[u8], offset: usize) -> usize {
+    data.get(offset..offset + 4).map_or(0, |bytes| {
+        u32::from_le_bytes([bytes[0], bytes[1], bytes[2], bytes[3]]) as usize
+    })
+}
+
+/// Port of Go's `time.loadTzinfoFromZip`: reads one stored (uncompressed)
+/// entry from the central directory of Go's bundled `zoneinfo.zip`.
+fn tzinfo_from_zip<'a>(zip: &'a [u8], name: &str) -> Result<&'a [u8], TimestampError> {
+    const END_HEADER: usize = 0x0605_4b50;
+    const CENTRAL_HEADER: usize = 0x0201_4b50;
+    const LOCAL_HEADER: usize = 0x0403_4b50;
+    const END_SIZE: usize = 22;
+    const LOCAL_SIZE: usize = 30;
+    let corrupt = || TimestampError("corrupt zip file zoneinfo.zip".into());
+
+    let end = zip
+        .len()
+        .checked_sub(END_SIZE)
+        .map(|start| &zip[start..])
+        .filter(|end| get4(end, 0) == END_HEADER)
+        .ok_or_else(corrupt)?;
+    let count = get2(end, 10);
+    let size = get4(end, 12);
+    let offset = get4(end, 16);
+    let mut directory = zip
+        .get(offset..offset.saturating_add(size))
+        .ok_or_else(corrupt)?;
+
+    for _ in 0..count {
+        if get4(directory, 0) != CENTRAL_HEADER {
+            break;
+        }
+        let method = get2(directory, 10);
+        let size = get4(directory, 24);
+        let name_length = get2(directory, 28);
+        let extra_length = get2(directory, 30);
+        let comment_length = get2(directory, 32);
+        let offset = get4(directory, 42);
+        let entry_name = directory.get(46..46 + name_length).ok_or_else(corrupt)?;
+        directory = directory
+            .get(46 + name_length + extra_length + comment_length..)
+            .ok_or_else(corrupt)?;
+        if entry_name != name.as_bytes() {
+            continue;
+        }
+        if method != 0 {
+            return Err(TimestampError(format!(
+                "unsupported compression for {name} in zoneinfo.zip"
+            )));
+        }
+
+        let header = zip
+            .get(offset..offset.saturating_add(LOCAL_SIZE + name_length))
+            .filter(|header| {
+                get4(header, 0) == LOCAL_HEADER
+                    && get2(header, 8) == method
+                    && get2(header, 26) == name_length
+                    && &header[LOCAL_SIZE..] == name.as_bytes()
+            })
+            .ok_or_else(corrupt)?;
+        let start = offset + LOCAL_SIZE + name_length + get2(header, 28);
+        return zip
+            .get(start..start.saturating_add(size))
+            .ok_or_else(corrupt);
+    }
+    Err(TimestampError(format!("unknown time zone {name}")))
+}
+
 #[cfg(windows)]
 fn system() -> LocalTimeZone {
     windows::load().unwrap_or_else(LocalTimeZone::utc)
@@ -188,4 +251,18 @@ fn system() -> LocalTimeZone {
 #[cfg(not(any(windows, unix)))]
 fn system() -> LocalTimeZone {
     LocalTimeZone::utc()
+}
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn bundled_zone_lookup() {
+        assert!(super::LocalTimeZone::from_name("America/New_York").is_ok());
+        for missing in ["America", "America/", "Nowhere/City", "america/new_york"] {
+            assert_eq!(
+                super::LocalTimeZone::from_name(missing).unwrap_err().0,
+                format!("unknown time zone {missing}")
+            );
+        }
+    }
 }

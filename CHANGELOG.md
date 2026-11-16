@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.6.8 - 2026-11-16
+
+- Remove the `zip` dependency, which carried RustSec advisories for archive
+  extraction (never called here). Bundled time zones are read by a translation
+  of Go's `loadTzinfoFromZip`; the zone data is unchanged. An unknown zone name
+  now reports Go's `unknown time zone <name>` error message.
+- Remove `markup5ever` 0.14; entity decoding uses the identical tables from
+  html5ever 0.39, so rust-trafilatura no longer pulls a second html5ever stack
+  through this crate.
+- Use `winreg` 0.56 on Windows, sharing `windows-sys` 0.61.
+- Replace exact (`=`) dependency requirements with compatible (`^`) ones so
+  downstream lockfiles can take patch releases. Extraction output is unchanged
+  on the Go reference tests and corpus comparisons.
+
 ## 0.6.7 - 2026-09-29
 
 - Documentation-only release of `rust-readability-v2`; runtime source and

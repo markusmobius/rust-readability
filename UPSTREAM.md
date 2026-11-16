@@ -1,5 +1,34 @@
 # Upstream Reference
 
+## Dependency Release 0.6.8
+
+`rust-readability-v2` 0.6.8 changes dependencies, not extraction behavior
+([rust-readability#1](https://github.com/markusmobius/rust-readability/issues/1),
+[rust-trafilatura#2](https://github.com/markusmobius/rust-trafilatura/issues/2)):
+
+- The `zip` crate is removed. Named zones are read from the bundled, unchanged
+  `zoneinfo.zip` by a translation of Go's `time.loadTzinfoFromZip`, which reads
+  stored entries straight from the central directory. All 598 entries are
+  stored; every returned entry was checked byte-for-byte against Python's
+  `zipfile` extraction. A missing zone now reports Go's
+  `unknown time zone <name>` message instead of the `zip` crate's error text.
+  The removed `zip` 4 dependency carried RUSTSEC-2026-0367, -0368, -0369 and
+  -0429; all concern archive extraction, which this crate never called.
+- `markup5ever` 0.14.1 is removed. HTML entity decoding now uses
+  `html5ever::data` from the html5ever 0.39 generation already in use; both
+  tables are generated from a byte-identical `entities.rs` source.
+- Windows builds use `winreg` 0.56, which shares `windows-sys` 0.61 instead of
+  adding 0.59.
+- Library requirements are compatible (`^`) rather than exact (`=`):
+  html5ever/markup5ever_rcdom 0.39.0, html5gum 0.8.4 and jetscii 0.5.3 remain
+  the tested minimums recorded in `Cargo.lock`.
+
+Validation on Rust 1.98.1 Linux (WSL): formatting, all tests, doctests, strict
+Clippy and the ignored `html_corpus` and `upstream_corpus` Go comparisons
+against the previously generated Go 0.6.0 outputs. Windows-only code was
+type-checked for `x86_64-pc-windows-msvc`; native Windows runs are covered by
+release CI. Measured 0.6.5 results and their reports are not relabeled or rerun.
+
 ## Documentation Release 0.6.7
 
 `rust-readability-v2` 0.6.7 packages the approved nine-section README and the full
@@ -124,7 +153,7 @@ Extraction is synchronous and single-threaded. Each server engine owns its parse
 
 Read-only DOM parsing consumes its private prepared clone for the first extraction attempt. A failed attempt reconstructs the same preparation from the unchanged input, retaining the original retry flags, atoms, cleared namespaces and node layout. Metadata is extracted once. Mutating DOM APIs still retain their preparation mutations, including during unwinding. Forced-retry tests compare the complete result DOM and metadata against the mutating path. No scoring, retry, cleanup or page-selection shortcuts are used.
 
-The HTML adapter uses pinned html5ever 0.39.0 and markup5ever_rcdom 0.39.0. The older parser used by DomDistiller remains unchanged. The adapter preserves Go's formatting-element attribute order, duplicate-attribute handling, namespace adjustments, exact atom dictionary and template-content layout. Comments use Go's entity decoding. Raw leading doctypes are located with html5gum's tokenizer and interpreted in Go's order, including empty identifiers, decoded quotes and quirks decisions. A token/tree sink enforces Go's foreign-content/template termination rule during construction. Its trace hook detects foreign nodes retained by the builder; foreign nodes do not enter HTML's active-formatting list.
+The HTML adapter uses html5ever 0.39 and markup5ever_rcdom 0.39 (tested at 0.39.0; see `Cargo.lock`). Rust-DomDistiller 1.0.4 uses the same html5ever generation. The adapter preserves Go's formatting-element attribute order, duplicate-attribute handling, namespace adjustments, exact atom dictionary and template-content layout. Comments use Go's entity decoding. Raw leading doctypes are located with html5gum's tokenizer and interpreted in Go's order, including empty identifiers, decoded quotes and quirks decisions. A token/tree sink enforces Go's foreign-content/template termination rule during construction. Its trace hook detects foreign nodes retained by the builder; foreign nodes do not enter HTML's active-formatting list.
 
 The private [tokenizer](src/html/tokenizer/mod.rs) is adapted from html5ever
 0.39.0 at commit `ce64836c685025a5fef0860fa2e9c80b2683e8d0`, specifically
@@ -174,7 +203,7 @@ an extraction fallback, or a change to the standalone Readability algorithm.
 
 HTML serialization is a local translation of x/net v0.59.0, including comment escaping, doctype identifiers, void-element failures, literal text in HTML integration contexts, and plaintext aborts. Text serialization follows Readeck's renderer, including queued whitespace, block separators, preformatted text, math annotations and hidden content.
 
-Timestamps use a direct translation of `itlightning/dateparse v0.2.1` and Go's layout parser, not Markus DateParser or a heuristic substitute. Chrono supplies calendar arithmetic. TZif decoding uses tz-rs with Go-compatible transition ordering, pre-first-transition choice and abbreviation lookup. Named fallback data and Windows abbreviations come from the pinned Go toolchain. Unix uses the system zone files and Go's fallback order. Windows uses native timezone information, registry/MUI name lookup, Go's abbreviation table and its current-rule projection across a 200-year window. Unsafe code is limited to the Windows FFI module and the upstream tokenizer SIMD routines described above.
+Timestamps use a direct translation of `itlightning/dateparse v0.2.1` and Go's layout parser, not Markus DateParser or a heuristic substitute. Chrono supplies calendar arithmetic. TZif decoding uses tz-rs with Go-compatible transition ordering, pre-first-transition choice and abbreviation lookup. Named fallback data and Windows abbreviations come from the pinned Go toolchain; named zones are read from the bundled `zoneinfo.zip` by a translation of Go's `loadTzinfoFromZip`. Unix uses the system zone files and Go's fallback order. Windows uses native timezone information, registry/MUI name lookup, Go's abbreviation table and its current-rule projection across a 200-year window. Unsafe code is limited to the Windows FFI module and the upstream tokenizer SIMD routines described above.
 
 ## Reader Provenance
 
